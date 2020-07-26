@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>      <script defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
+    
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="static/sch/assets/css/theme-1.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colrolib Templates">
+    <meta name="author" content="colorlib.com">
+    <meta name="keywords" content="Colrolib Templates">
+
+    <!-- Title Page-->
+    <title>Իմ Երթուղղիները</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/indexpage.css">
+    <link rel="shortcut icon" href="/static/img/loygo.png">
+
+    <!-- Icons font CSSase    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="static/sch/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="static/sch/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="static/sch/css/main.css" rel="stylesheet" media="all">
+    <script src="static/sch/vendor/jquery/jquery.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="static/sch/vendor/select2/select2.min.js"></script>
+    <script src="static/sch/vendor/jquery-validate/jquery.validate.min.js"></script>
+    <script src="static/sch/vendor/bootstrap-wizard/bootstrap.min.js"></script>
+    <script src="static/sch/vendor/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+    <script src="static/sch/vendor/datepicker/moment.min.js"></script>
+    <script src="static/sch/vendor/datepicker/daterangepicker.js"></script>
+
+    <!-- Main JS-->
+    <script src="static/sch/js/global.js"></script>
+
+</head> 
+
+<body>
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav" style="box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="/"><img src="/static/img/log1.png" style="width: 95%"></a>
+      <button onclick="set_res_im()"  class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+
+        <ul class="navbar-nav ml-auto my-2 my-lg-0">
+          <li class="nav-item">
+            <a  class="nav-link js-scroll-trigger" href="sc">Գտնել</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" onclick="check_log()">Ավելացնել</a>
+          </li>
+          
+          <li class="nav-item">
+            <a id="log_in_is_not" class="nav-link js-scroll-trigger" onclick="show_log();">Մուտք</a>
+          </li>
+          
+          <li class="nav-item">
+            <a id="log_in_is_not1" class="nav-link js-scroll-trigger" onclick="show_regist();">Գրանցում</a>
+          </li>
+
+        </ul>
+        <div id="user_dropdown" class="dropdown">
+        <img   id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius: 2.25rem!important; display: none;" src="" class="rounded float-left" alt="..." width="50" height="50">
+
+            <div  class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="noto" id="user_the_name"></a>
+    <a class="dropdown-item" href="my_pos">Իմ</a>
+    <a class="dropdown-item" href="my_booked">Պատվիրված</a>
+    <a class="dropdown-item" onclick="$.post('/valod');setTimeout(logout,1000);">Դուրս գալ</a>
+  </div>
+</div>
+
+
+        <div id="lang" class="dropdown">
+        <img  class="dropdown-toggle" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="    border-radius: 2.25rem!important;width: 25px;height: 25px;right: 31px;margin-left: 22px;" src="https://cdn.countryflags.com/thumbs/armenia/flag-button-round-250.png" class="rounded float-left" alt="..." width="50" height="50">
+
+            <div  class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <a class="dropdown-item" onclick="document.getElementById('dropdownMenuButton1').src = 'https://cdn.countryflags.com/thumbs/armenia/flag-button-round-250.png'; window.history.pushState('page2', 'Title', removeURLParameter(window.location.href, 'lang') + '&lang=am'); cur_lang='am'"><img style="width: 25px;
+    height: 25px;" class="rounded-circle" src="https://cdn.countryflags.com/thumbs/armenia/flag-button-round-250.png" alt="">hy</a>
+    <a class="dropdown-item" onclick="document.getElementById('dropdownMenuButton1').src = 'https://cdn.countryflags.com/thumbs/united-kingdom/flag-3d-round-250.png'; window.history.pushState('page2', 'Title', removeURLParameter(window.location.href, 'lang') + '&lang=en'); cur_lang='en'"><img style="width: 25px;
+    height: 25px;" class="rounded-circle" src="https://cdn.countryflags.com/thumbs/united-kingdom/flag-3d-round-250.png" alt="">en</a>
+    <a class="dropdown-item" onclick="document.getElementById('dropdownMenuButton1').src = 'https://cdn.countryflags.com/thumbs/russia/flag-button-round-250.png'; window.history.pushState('page2', 'Title', removeURLParameter(window.location.href, 'lang') + '&lang=ru'); cur_lang='ru'"><img style="width: 25px;
+    height: 25px;" class="rounded-circle" src="https://cdn.countryflags.com/thumbs/russia/flag-button-round-250.png">ru</a>
+  </div>
+</div>
+
+      </div>
+    </div>
+  </nav>
+
+          
+
+            
+
+
+
+    <div class="main-wrapper">
+	    <section class="col-md-11 blog-list px-3 py-5 p-md-10">
+		    <div id="your_posts" class="container">
+
+				
+		    </div>
+	    </section>
+	    <form action="/quest?a=1" id="quest"></form>
+    </div><!--//main-wrapper-->
+   
+<script type="text/javascript">
+    var full_info;
+    var curr_us;
+    console.log(window.location.href);
+    $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    (function(){
+        $.getJSON(
+            $SCRIPT_ROOT+"/get_full_posts", // Your AJAX route here
+            function(get_full_posts) {
+                    console.log(get_full_posts);
+                    full_info = get_full_posts;
+                    show_posts();
+                });
+        $.getJSON(
+            $SCRIPT_ROOT+"/user_login_info", // Your AJAX route here
+            function(user_login_info) {
+                    curr_us = user_login_info;
+                    show_posts();
+                });
+
+    })();
+
+    function removeURLParameter(url, parameter) {
+    //prefer to use l.search if you have a location/link object
+    var urlparts = url.split('?');   
+    if (urlparts.length >= 2) {
+
+        var prefix = encodeURIComponent(parameter) + '=';
+        var pars = urlparts[1].split(/[&;]/g);
+
+        //reverse iteration as may be destructive
+        for (var i = pars.length; i-- > 0;) {    
+            //idiom for string.startsWith
+            if (pars[i].lastIndexOf(prefix, 0) !== -1) {  
+                pars.splice(i, 1);
+            }
+        }
+
+        return urlparts[0] + (pars.length > 0 ? '?' + pars.join('&') : '');
+    }
+    return url;
+}
+
+    function show_posts(){
+        document.getElementById("your_posts").innerHTML = "";
+        console.log(1);
+        for(var i = 0; i < full_info.length; i++){
+            console.log(2)
+            var my_values;
+            my_values = full_info[i][12];
+            for(j in full_info[i][12]){
+                my_values = my_values.replace("'", '"').replace("'", '"');
+            }
+            console.log(JSON.parse(my_values))
+            for (k in JSON.parse(my_values)){
+                console.log(JSON.parse(my_values)[k])
+                console.log(JSON.parse(my_values)[k][0])
+                if(JSON.parse(my_values)[k][0] == curr_us){
+                    console.log(2)
+                    var my_div1 = document.createElement("div");
+                    var my_div2 = document.createElement("div");
+                    var my_div3 = document.createElement("div");
+                    var my_div4 = document.createElement("div");
+                    var my_div5 = document.createElement("div");
+                    var my_img1 = document.createElement("IMG");
+                    var my_span1 = document.createElement("SPAN");
+                    var my_span2 = document.createElement("SPAN");
+                    var my_span3 = document.createElement("SPAN");
+                    var my_h3 = document.createElement("h3");
+                    var my_h3_1 = document.createElement("h3");
+                    
+                    my_div3.className = "media-body";
+                    my_h3.className = "title mb-1";
+                    my_h3.innerHTML = full_info[i][1] + "  to  " + full_info[i][2];
+                    my_div4.className = "meta mb-1";
+                    
+                    my_span1.className = "date";
+                    my_span1.innerHTML = "Some day";
+                    my_span2.className = "time";
+                    my_span2.innerHTML = full_info[i][5] + "  դրամ"
+                    my_span3.className = "comment";
+                    my_span3.innerHTML = (JSON.parse(my_values)[k][1]) ? "Booked" : "Requested" 
+                    my_img1.className = "mr-3 img-fluid post-thumb d-none d-md-flex";
+                    my_img1.src = "/static/user_image/" + full_info[i][11] + "/a.png";
+                    my_div2.className = "media input-group";
+                    my_div1.className = "item mb-5";
+                    my_h3_1.className = "mr-3 img-fluid post-thumb d-none d-md-flex col-md-4";
+                    my_h3_1.innerHTML = full_info[i][11];
+                    my_div1.id = String(full_info[i][0]) + "asd"
+                    my_div1.value = full_info[i][0];
+
+                    my_div5.appendChild(my_img1);
+                    my_div5.appendChild(my_h3_1);
+                    my_div4.appendChild(my_span1);
+                    my_div4.appendChild(my_span2);
+                    my_div4.appendChild(my_span3);
+                    my_div3.appendChild(my_h3);
+                    my_div3.appendChild(my_div4);
+                    my_div2.appendChild(my_div5);
+                    my_div2.appendChild(my_div3);
+                    my_div1.appendChild(my_div2);
+                    my_div1.onclick = function () {$.post("/get_quest/" + document.getElementById(this.id).value);
+                    //document.getElementById("quest").submit();
+                    window.location.href = "/quest?id=" + document.getElementById(this.id).value;
+                    };
+                    document.getElementById("your_posts").appendChild(my_div1);
+
+                }
+            }
+
+        }
+    }
+
+      function check_log(){
+        if(document.getElementById("user_the_name").innerHTML == ""){window.location.href = "/lg_dp?create=1";}
+        else{window.location.href = "/noto?create=1";}
+      }
+      
+     function show_log(){
+      window.location.href = "/lg_dp"
+    }
+    function show_regist(){
+      window.location.href = "/rg_dp"
+    }
+</script>
+<script type="text/javascript">
+           var x1 = document.getElementById("log_in_is_not");
+      var x = document.getElementById("log_in_is_not1");
+        try{  
+    if (JSON.stringify({{ user }}) == "0"){      
+      var user_img = document.getElementById("dropdownMenuButton");
+      user_img.style.display = "none";
+          x1.style.display = "block";
+      x.style.display = "block";}
+      else{alert(1)}
+  }
+    catch(e) {
+            var user_img = document.getElementById("dropdownMenuButton");
+      user_img.style.display = "block";
+      x1.style.display = "none";
+      x.style.display = "none";
+              $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+
+        (function(){
+
+                            $.getJSON(
+            $SCRIPT_ROOT+"/user_login_info", // Your AJAX route here
+            function(user_login_info) { 
+                document.getElementById("user_the_name").innerHTML = user_login_info;
+                document.getElementById("dropdownMenuButton").src = "/static/user_image/" + user_login_info + "/a.png"
+}   
+              );
+              //  setTimeout(arguments.callee, 1000);
+        })();
+      }
+      function logout(){
+      window.location.href = 'login';
+    }
+    </script> 
+    
+       
+    <!-- Javascript -->          
+    <script src="static/sch/assets/plugins/jquery-3.3.1.min.js"></script>
+    <script src="static/sch/assets/plugins/popper.min.js"></script> 
+    <script src="static/sch/assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
+
+    <!-- Style Switcher (REMOVE ON YOUR PRODUCTION SITE) -->
+    <script src="static/sch/assets/js/demo/style-switcher.js"></script>     
+    
+
+    <script src="static/sch/vendor/jquery/jquery.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="static/sch/vendor/select2/select2.min.js"></script>
+    <script src="static/sch/vendor/jquery-validate/jquery.validate.min.js"></script>
+    <script src="static/sch/vendor/bootstrap-wizard/bootstrap.min.js"></script>
+    <script src="static/sch/vendor/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+    <script src="static/sch/vendor/datepicker/moment.min.js"></script>
+    <script src="static/sch/vendor/datepicker/daterangepicker.js"></script>
+
+    <!-- Main JS-->
+    <script src="static/sch/js/global.js"></script>
+
+</body>
+</html> 

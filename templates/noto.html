@@ -1,0 +1,2920 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>յուզեր անուն</title>
+  <link rel="shortcut icon" href="/static/img/loygo1.png">
+<link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <!-- Custom fonts for this template-->
+  <link href="static/us_int/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="static/us_int/css/sb-admin-2.min.css" rel="stylesheet">
+ 
+  <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+ 
+   <script src="static/us_int/vendor/jquery/jquery.min.js"></script>
+
+
+<script src="https://api-maps.yandex.ru/2.1/?apikey=919edd6b-dd1e-443e-9abf-e727e549da9d&lang=en_US" type="text/javascript"></script>
+ <script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
+
+  <!-- Page level plugins -->
+
+   <script type="text/javascript">
+
+var maps_sigges = [];
+
+      ymaps.ready(init);
+      var myMap, 
+            myPlacemark;
+            var suggest;
+      function init(){
+        /*
+        
+              
+
+        ymaps.route(['Москва', 'Санкт-Петербург']).then(
+          function (route){
+            myMap.geoObjects.add(route);
+          },
+          function (error){
+            alert(error.message);
+          }
+        );
+        myMap.geoObjects.add(myPlacemark);*/
+myMap = new ymaps.Map("map", {
+          center: [55.76, 37.64],
+          zoom: 7
+        });
+
+
+suggest = ymaps.suggest("Gyu").then(function (items) {
+   for(i in items){
+    countries.push(items[i]["displayName"])
+  }
+  console.log(countries);
+  });
+   /*/     myPlacemark = new ymaps.Placemark([55.76, 37.64], {
+          hintContent: 'Москва!',
+          balloonContent: 'Столица России'
+        });*/
+/*var multiRoute = new ymaps.multiRouter.MultiRoute({   
+    // Точки маршрута. Точки могут быть заданы как координатами, так и адресом. 
+    referencePoints: [
+        document.getElementById("mek").innerHTML,
+        'Yerevan', 
+       // [55.734876, 37.59308], // улица Льва Толстого.
+    ]
+}, {
+      // Автоматически устанавливать границы карты так,
+      // чтобы маршрут был виден целиком.
+      boundsAutoApply: true
+});*/
+var searchControl = new ymaps.control.SearchControl({
+     options: {
+         float: 'left',
+        provider: 'yandex#search'
+     }
+});
+// Добавление маршрута на карту.
+//myMap.geoObjects.add(multiRoute);
+      }
+
+
+  function findo(){
+        var multiRoute = new ymaps.multiRouter.MultiRoute({   
+    // Точки маршрута. Точки могут быть заданы как координатами, так и адресом. 
+    referencePoints: [
+        '',
+        '', 
+       // [55.734876, 37.59308], // улица Льва Толстого.
+    ]
+}, {
+      // Автоматически устанавливать границы карты так,
+      // чтобы маршрут был виден целиком.
+      boundsAutoApply: true
+});
+myMap.geoObjects.add(multiRoute);
+
+    var multiRoute = new ymaps.multiRouter.MultiRoute({   
+    // Точки маршрута. Точки могут быть заданы как координатами, так и адресом. 
+    referencePoints: [
+        document.getElementById("mek").value,
+        document.getElementById("erku").value, 
+       // [55.734876, 37.59308], // улица Льва Толстого.
+    ]
+}, {
+      // Автоматически устанавливать границы карты так,
+      // чтобы маршрут был виден целиком.
+      boundsAutoApply: true
+});
+var searchControl = new ymaps.control.SearchControl({
+     options: {
+         float: 'left',
+        provider: 'yandex#search'
+     }
+});
+// Добавление маршрута на карту.
+myMap.geoObjects.add(multiRoute);
+
+
+  
+
+  }
+  function suig(){
+   var qunnnn = [];
+    sine = []
+    //suggest =
+  /*the autocomplete function takes two arguments,
+  the text field element and an array of possible autocompleted values:*/
+  var currentFocus;
+  console.log(maps_sigges);
+  inp = document.getElementById("mek")
+  /*execute a function when someone writes in the text field:*/
+  document.getElementById("mek").addEventListener("input", function(e) {
+     ymaps.suggest(document.getElementById("mek").value).then(function (items) { 
+      console.log(items) 
+      var a, b, i, val = document.getElementById("mek").value;
+      /*close any already open lists of autocompleted values*/
+      
+      closeAllLists();
+      //if (!val) { return false;}
+      currentFocus = -1;
+      console.log(items);
+      arr = []
+      for(i in items){
+        arr.push(items[i]["displayName"])
+      }
+      console.log(arr);
+      //console.log(suig(document.getElementById("mek").value));
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.setAttribute("id", document.getElementById("mek").id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      document.getElementById("mek").parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (var i = 0; i < arr.length; i++) {
+        console.log("countries length")
+        /*check if the item starts with the same letters as the text field value:*/
+        if (1) {
+          console.log("IN DIV")
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+          /*make the matching letters bold:*/
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+          b.addEventListener("click", function(e) {
+              /*insert the value for the autocomplete text field:*/
+              document.getElementById("mek").value = this.getElementsByTagName("input")[0].value;
+              myMap.geoObjects.removeAll();
+              findo();
+              /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+              closeAllLists();
+          });
+          a.appendChild(b);
+        }
+      }
+  });
+  /*execute a function presses a key on the keyboard:*/
+  document.getElementById("mek").addEventListener("keydown", function(e) {
+    console.log("down press")
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        /*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+        }
+      }
+ setTimeout(250);
+  });
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    /*close all autocomplete lists in the document,
+    except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
+  /*execute a function when someone clicks in the document:*/
+  document.addEventListener("click", function (e) {
+      closeAllLists(e.target);
+  });
+});
+
+      
+
+}
+
+  function suig1(){
+   var qunnnn = [];
+    sine = []
+    //suggest =
+  /*the autocomplete function takes two arguments,
+  the text field element and an array of possible autocompleted values:*/
+  var currentFocus;
+  console.log(maps_sigges);
+  inp = document.getElementById("erku")
+  /*execute a function when someone writes in the text field:*/
+  document.getElementById("erku").addEventListener("input", function(e) {
+     ymaps.suggest(document.getElementById("erku").value).then(function (items) { 
+      console.log(items) 
+      var a, b, i, val = document.getElementById("erku").value;
+      /*close any already open lists of autocompleted values*/
+      
+      closeAllLists();
+      //if (!val) { return false;}
+      currentFocus = -1;
+      console.log(items);
+      arr = []
+      for(i in items){
+        arr.push(items[i]["displayName"])
+      }
+      console.log(arr);
+      //console.log(suig(document.getElementById("mek").value));
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.setAttribute("id", document.getElementById("erku").id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      document.getElementById("erku").parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (var i = 0; i < arr.length; i++) {
+        console.log("countries length")
+        /*check if the item starts with the same letters as the text field value:*/
+        if (1) {
+          console.log("IN DIV")
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+          /*make the matching letters bold:*/
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+          b.addEventListener("click", function(e) {
+              /*insert the value for the autocomplete text field:*/
+              document.getElementById("erku").value = this.getElementsByTagName("input")[0].value;
+              myMap.geoObjects.removeAll();
+              findo();
+              /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+              closeAllLists();
+          });
+          a.appendChild(b);
+        }
+      }
+  });
+  /*execute a function presses a key on the keyboard:*/
+  document.getElementById("erku").addEventListener("keydown", function(e) {
+    console.log("down press")
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        /*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+        }
+      }
+ setTimeout(250);
+  });
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    /*close all autocomplete lists in the document,
+    except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
+  /*execute a function when someone clicks in the document:*/
+  document.addEventListener("click", function (e) {
+      closeAllLists(e.target);
+  });
+});
+
+      
+
+}
+
+
+</script>
+  <!-- Page level custom scripts -->
+ 
+
+  <style type="text/css">
+
+
+/****** Style Star Rating Widget *****/
+
+.rating { 
+  border: none;
+  float: left;
+}
+
+.rating > input { display: none; } 
+.rating > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+
+</style>
+
+</head>
+
+<body id="page-top">
+            <form id="logo_out" action="{{url_for ('login')}}"> </form>
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul style="background-image: linear-gradient(180deg,#496A90 10%,#94BDEF 100%);" class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" onclick="window.location.href = '/login?lang=' + cur_lang">
+        <div class="sidebar-brand-icon">
+          <img style="width: 65%" src="/static/img/loygo1.png">
+        </div>
+        <div href="login" class="sidebar-brand-text mx-3">KTanem</div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li id="dash_item" class="nav-item active">
+        <a class="nav-link" onclick="hide_settings()">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span id="glx">Գլխավոր</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Կտանեմ
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li id="settings_item" class="nav-item">
+        <a class="nav-link collapsed"  data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-cog"></i>
+          <span id="karg">Կարգավորումներ</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header" id="der">Derolo կարգավորումներ</h6>
+            <a class="collapse-item" id="sec" onclick="hide_settings(); show_security()">Անվտ․ կարգ․</a>
+            <a class="collapse-item" id="cont" onclick="show_contact()">Կապ</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Nav Item - Utilities Collapse Menu -->
+      <li id="ways_active" class="nav-item">
+        <a class="nav-link collapsed"  data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-fw fa-wrench"></i>
+          <span id="way">Ճանապարհներ</span>
+        </a>
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header" id="boo">Երթեր</h6>
+            <a class="collapse-item" onclick="new_post_show()" id="cr">Ստեղծել</a>
+            <a class="collapse-item" onclick="window.location.href = '/sc?lang=' + cur_lang" id="fi">Գտնել</a>
+            <a class="collapse-item" onclick="window.location.href = '/my_pos?lang=' + cur_lang" id="my">Իմ</a>
+            <a class="collapse-item" onclick="window.location.href = '/my_booked?lang=' + cur_lang" id="boked">Պատվիրվածներ</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Divider -->
+
+      <!-- Heading -->
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+
+          <!-- Topbar Search -->
+          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <div class="input-group">
+              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-primary" style="background-color: #496a90;border-color: #496a90;" type="button">
+                  <i class="fas fa-search fa-sm" ></i>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <li class="nav-item dropdown no-arrow d-sm-none">
+              <a class="nav-link dropdown-toggle"  id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-100 navbar-search">
+                  <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" style="background-color: #496a90;border-color: #496a90;" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </li>
+
+            <!-- Nav Item - Alerts -->
+            
+            <li  id="notefication" class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle"  id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <!-- Counter - Alerts -->
+                <span id="unread_notef" class="badge badge-danger badge-counter">3+</span>
+              </a>
+              <!-- Dropdown - Alerts -->
+              <div id="notefic" style="max-height: 345px;" class="overflow-auto dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                <h6 class="dropdown-header">
+                  Alerts Center
+                </h6>
+                <a class="dropdown-item d-flex align-items-center" >
+                  <div class="mr-3">
+                    <div class="icon-circle bg-primary">
+                      <i class="fas fa-file-alt text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">Դեկտեմբերի 12, 2019</div>
+                    <span class="font-weight-bold">Նոր ամսական զեկույցը պատրաստ է ներբեռնելու!</span>
+                    <button class="btn btn-success">Agres</button>
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" >
+                  <div class="mr-3">
+                    <div class="icon-circle bg-primary">
+                      <i class="fas fa-file-alt text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">Դեկտեմբերի 12, 2019</div>
+                    <span class="font-weight-bold">Նոր ամսական զեկույցը պատրաստ է ներբեռնելու!</span>
+                    <fieldset class="rating">
+    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+    <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+    <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+    <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+    <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+    <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+</fieldset>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <!-- Nav Item - Messages -->
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle"  id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i><img src="static/img/global.png" style="width: 22px;height: 22px;"></i>
+                <!-- Counter - Messages -->
+              </a>
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown" style="width: 10rem!important;">
+                <h6 class="dropdown-header" style="background-color: #496a90;border-color: #496a90;" id="mc">
+                  Լեզու
+                </h6>
+
+                <a class="dropdown-item d-flex align-items-center" onclick="hayafication()" >
+                  <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="https://cdn.countryflags.com/thumbs/armenia/flag-button-round-250.png" alt="">
+                  </div>
+
+                  <div id="hy_text" class="font-weight-bold">
+                    <div class="text-truncate">Հայերեն</div>
+                    
+                  </div>
+                </a>
+
+                <a class="dropdown-item d-flex align-items-center" onclick="anglafication()">
+                  <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="https://cdn.countryflags.com/thumbs/united-kingdom/flag-3d-round-250.png" alt="">
+                  </div>
+                  <div id="en_text">
+                    <div class="text-truncate">English</div>
+                    
+                  </div>
+                </a>
+
+                <a class="dropdown-item d-flex align-items-center" onclick="rusafication()">
+                  <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="https://cdn.countryflags.com/thumbs/russia/flag-button-round-250.png" alt="">
+                  </div>
+                  <div id="rs_text">
+                    <div class="text-truncate">Руский </div>
+                   
+                  </div>
+                </a>
+
+              </div>
+            </li>
+
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle"  id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span id="name_sname" class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                <img id="user_image" class="img-profile rounded-circle">
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" onclick="hide_settings()" id="mine">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Անձնական էջ
+                </a>
+                <a class="dropdown-item" onclick="show_settings()" id="set">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Կարգավորումներ
+                </a>
+                <a class="dropdown-item" id="acti">
+                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Գործունեության տեղեկամատյան
+                </a>
+                <div class="dropdown-divider"></div>
+                <a  class="dropdown-item" data-toggle="modal" data-target="#logoutModal" id="out">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Դուրս գալ
+                </a>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+
+        <div id="main_info" class="container-fluid">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800" id="da">Գլխավոր Էջ</h1>
+            <a  onclick="new_post_show()" style="background-color: #496a90;border-color: #496a90;color: #fff;" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="crm"><i class="fas fa-download fa-sm text-white-50"></i> Ստեղծել</a>
+          </div>
+
+          <!-- Content Row -->
+          <div class="row float-xl-right" style="margin-right: 3.25rem;">
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div style="border-left: .25rem solid #93bcee!important;" class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" id="inc">Պատվիրված Երթեր</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">2</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div style="border-left: .25rem solid #496a90!important;" class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div style="color: #496a90!important;" class="text-xs font-weight-bold text-success text-uppercase mb-1" id="incy">Ստեղծված Երթեր</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div  class="col-xl-3 col-md-6 mb-4">
+              <div  class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1" id="ar">Առաջադրանքներ</div>
+                      <div class="row no-gutters align-items-center">
+                        <div class="col-auto">
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800" id="user_rate_parcent">50%</div>
+                        </div>
+                        <div class="col">
+                          <div class="progress progress-sm mr-2">
+                            <div class="progress-bar bg-info" role="progressbar" id="user_rate_div" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pending Requests Card Example -->
+            <div  class="col-xl-3 col-md-6 mb-4">
+              <div style="display: none;" class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1" id="sps">Սպասող պահանջները</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-comments fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+      <div class="col-sm-3"><!--left col-->
+              
+
+      <div class="text-center">
+        <img style="border-radius: 105px;" id="user_img" src="" class="avatar img-circle img-thumbnail" alt="avatar" onclick="window.location.href = '/sl_ph?lang=' + cur_lang">
+      </div>
+          
+          
+
+          
+        </div><!--/col-3-->
+      <div class="col-sm-5">
+              
+          <div class="tab-content">
+            <div class="tab-pane active" id="home">
+                <hr>
+                  <form class="form" action="##" method="post" id="registrationForm_main">
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                              <label for="first_name"><h4 id="ok">Անուն</h4></label>
+                              <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                            <label for="last_name"><h4 id="az">Ազգանուն</h4></label>
+                              <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
+                          </div>
+                      </div>
+          
+                      <div class="form-group">
+                        
+                          <div class="col-xs-6" id="user_phones">
+                              <label for="phone"><h4 id="ph">Հեռախոսահամար</h4></label>
+
+                          </div>
+
+                      </div>
+                        
+                        <div class="form-group">
+                                     
+                                <div class='col-xs-6'>
+                                  <label for="sign_birthdat"><h4 id="bd">Ծննդյան օր</h4></label>
+                                    <input type='text' class="form-control" id='sign_birthdat'  readonly>
+                                </div>             
+                                        
+                        </div>
+                        <script type="text/javascript">
+                          $(function () {
+                             $('#sign_birthdat').datetimepicker({
+                                     format: 'd-m-Y'
+                              });
+                          });
+                      </script>
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                              <label for="email"><h4 id="un">Օգտագործողի Անուն</h4></label>
+                              <input type="email" class="form-control" name="email" id="setts_uname" placeholder="you@email.com" title="enter your email.">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                           <div class="col-xs-12">
+                                <br>
+                                <button id="sv" onclick="update_user()" style="    background-color: #496a90;border-color: #496a90;" class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Պահպանել</button>
+                                <button onclick="reset_settings()" class="btn btn-lg" type="reset" id="ve"><i class="glyphicon glyphicon-repeat"></i> Վերականգնել</button>
+                            </div>
+                      </div>
+                </form>
+              
+              <hr>
+              
+             </div><!--/tab-pane-->
+          <!--/tab-pane-->
+          </div><!--/tab-content-->
+
+          </div>
+
+          <!-- Content Row -->
+<div id="inter_posts"></div>
+
+
+          <!-- Content Row -->
+          <div class="row">
+
+            <!-- Content Column -->
+            <div class="col-lg-6 mb-4">
+
+          </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+
+
+</div>
+
+      <div id="security_setting" style="display: none;" >
+    <div class="row" style="right: -10px;">
+      <div class="col-sm-10"><h1 id="karg">Կարգավորումներ</h1></div>
+    </div>
+    <br>
+      <div class="row d-flex justify-content-center">
+        <div class="col-sm-5" style="width: 95%">
+            <div class="tab-content">
+                <div class="tab-pane active" id="home">
+        <div class="form">
+          <div class="form-group">
+              <div class="col-xs-6">
+                  <label for="first_name"><h4 id="ner">Ներկաիս գաղտնաբառ</h4></label>
+                  <input type="password" class="form-control" name="first_name" id="previous_password" placeholder="Ներկաիս գաղտնաբառ" title="enter your first name if any.">
+              </div>
+          </div>
+          <div class="form-group">
+              <div class="col-xs-6">
+                  <label for="first_name"><h4 id="np">Նոր գաղտնաբառ</h4></label>
+                  <input type="password" class="form-control" name="first_name" id="new_password" placeholder="Նոր գաղտնաբառ" title="enter your first name if any.">
+              </div>
+          </div>
+          <div class="form-group">
+              <div class="col-xs-6">
+                  <label for="first_name"><h4 id="rp" >կրկնել</h4></label>
+                  <input type="password" class="form-control" name="first_name" id="new_password2" placeholder="կրկնել" title="enter your first name if any.">
+              </div>
+          </div>
+          <div class="form-group">
+            <div class="col-xs-12">
+            <br>
+                <button id="save_password"  style="background-color: #496a90;border-color: #496a90;" class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Պահպանել</button>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<div id="contact_div">
+
+
+
+    <div class="row" style="right: -10px;">
+      <div class="col-sm-10"><h1 id="contacto">Կապ</h1></div>
+    </div>
+    <br>
+      <div class="row d-flex justify-content-center">
+        <div class="col-sm-5" style="width: 95%">
+            <div class="tab-content">
+                <div class="tab-pane active" id="home">
+        <div class="form">
+
+          <div class="row" id="contact_phones_div">
+            <label for="first_name" class=""><h4 id="contact_phones">Հեռախոսահամարներ</h4></label>
+            
+
+
+          </div>
+
+
+          <div class="form-group">
+            <div class="col-xs-12">
+            <br>
+                <button onclick="if(phone_numbers < 3){new_phone_add_div();}" id="contact_phone_add"  style="background-color: #496a90;border-color: #496a90;" class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Ավելացնել</button>
+            </div>
+          </div>
+
+            <div class="row" id="contact_phones_div_new" style="display: none">
+            <label for="new_phone_number" class=""><h4 id="contact_phones">Նոր հեռախոսահամար</h4></label>
+
+            <div class="col-md-8">
+                <div class="input-group">
+                    <input name="FirstName" class="form-control" id="new_phone_number" type="text">
+                </div>
+            </div>
+            <br>
+            <label style="display: none;" for="new_phone_number_code" id="number_verification_label" class=""><h4 id="contact_phones">Ակտիվացման կոդ</h4></label>
+            <div class="col-md-8" id="number_verification_div" style="display: none">
+                <div class="input-group">
+                    <input name="FirstName" class="form-control" id="new_phone_number_code" type="text">
+                </div>
+            </div>
+            <br>
+          <div class="form-group" style="">
+            <div class="col-xs-12">
+
+                <button onclick="verify_new_phone_code();" id="number_full_verification1" style="background-color: #496a90;border-color: #496a90;display: none" class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Ակտիվացնել</button>
+                  <br>
+
+                <button onclick="verify_new_phone();" id="contact_phone_add1"  style="background-color: #496a90;border-color: #496a90;" class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Ստուգել</button>
+                
+                <button onclick="hide_new_phone_add_div();" id="contact_phone_add"  style="background-color: #496a90;border-color: #496a90;" class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Թողնել</button>
+            
+            </div>
+          </div>
+
+          </div>
+
+        </div>
+    </div>
+  </div>
+</div>
+</div>
+  
+</div>
+
+<div id="new_post_div">
+
+<style type="text/css">
+  :root {
+  --input-padding-x: 1.5rem;
+  --input-padding-y: 0.75rem;
+}
+
+.login,
+.image {
+  min-height: 100vh;
+}
+
+/*.bg-image {
+  background-image: url('https://source.unsplash.com/WEQbe2jBg40/600x1200');
+  background-size: cover;
+  background-position: center;
+}
+*/
+.login-heading {
+  font-weight: 300;
+}
+
+.btn-login {
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+  border-radius: 2rem;
+}
+
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-label-group>input,
+.form-label-group>label {
+  padding: var(--input-padding-y) var(--input-padding-x);
+  height: auto;
+  border-radius: 2rem;
+}
+
+.bg-primary {
+    background-color: #92bbed!important;
+  }
+
+.form-label-group>label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  /* Override default `<label>` margin */
+  line-height: 1.5;
+  color: #495057;
+  cursor: text;
+  /* Match the input under the label */
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  transition: all .1s ease-in-out;
+}
+
+.notef_button{
+  height: 22px;
+  padding-top: 0px;
+}
+
+.notef_button1{
+  height: 22px;
+  padding-top: 0px;
+  left: 13px;
+  position: relative;
+}
+
+.form-label-group input::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input:-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-moz-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::placeholder {
+  color: transparent;
+}
+
+.form-label-group input:not(:placeholder-shown) {
+  padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+  padding-bottom: calc(var(--input-padding-y) / 3);
+}
+
+.form-label-group input:not(:placeholder-shown)~label {
+  padding-top: calc(var(--input-padding-y) / 3);
+  padding-bottom: calc(var(--input-padding-y) / 3);
+  font-size: 12px;
+  color: #777;
+}
+
+/* Fallback for Edge
+-------------------------------------------------- */
+
+@supports (-ms-ime-align: auto) {
+  .form-label-group>label {
+    display: none;
+  }
+  .form-label-group input::-ms-input-placeholder {
+    color: #777;
+  }
+}
+
+/* Fallback for IE
+-------------------------------------------------- */
+
+@media all and (-ms-high-contrast: none),
+(-ms-high-contrast: active) {
+  .form-label-group>label {
+    display: none;
+  }
+  .form-label-group input:-ms-input-placeholder {
+    color: #777;
+  }
+}
+
+</style>
+              <form id="sock" action="#"><button id="sock_click" style="display: none;"></button></form>
+  <div class="container-fluid">
+
+  <div class="row no-gutter">
+
+    <div class="d-none d-md-flex col-md-0 col-lg-0 bg-image"></div>
+    <div class="col-md-8 col-lg-8">
+
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto">
+              <h3 class="login-heading mb-4" id="st">Ստեղծել</h3>
+              <div>
+                <div class="form-label-group autocomplete" autocomplete="off">
+                  <input type="text" id="mek" class="form-control" placeholder="From" required autofocus>
+                  <label for="mek" id="fr">Ից</label>
+                </div>
+                <div class="form-label-group">
+                  <input type="text" id="erku" class="form-control" placeholder="To" required>
+                  <label for="erku" id="too">Դեպի</label>
+                </div>
+
+                 <div class="z-depth-1-half map-container-4" style="height: 500px" id="map"></div> 
+                <div class="custom-control custom-checkbox mb-3">
+                  <input id="tuda_val" type="checkbox" onclick="tuda_show()" class="custom-control-input" id="customCheck1">
+                  <label class="custom-control-label" for="tuda_val" id="ba">Հետադարձ</label>
+                </div>
+                <div> 
+                        <div >
+                               <div class='form-label-group data'>
+                           <input placeholder="Go Time" type='text' class="form-control" id='datetimepicker4' readonly/>
+                                <label for="datetimepicker4" id="gt">Մեկնելու ժամանակ</label>
+                                 </div>
+                              <script type="text/javascript">
+                              $(function () {
+                                  $('#datetimepicker4').datetimepicker({
+                                       format: 'd-m-Y H:i',
+                                       step: 1,
+                                       minDate: new Date(new Date().getFullYear(), new  Date().getMonth(), new Date().getDate())
+                                  });
+                              });
+                            </script>
+                         </div>
+                  </div>
+                        <div id="tud">
+
+                        <div >
+                               <div class='form-label-group data'>
+                           <input placeholder="Back Time" type='text' class="form-control" id='datetimepicker5' readonly/>
+                                <label for="datetimepicker5" id="bt">Հետ վերադառնալու ժամ</label>
+                                 </div>
+                              <script type="text/javascript">
+                                $(function () {
+                                    $('#datetimepicker5').datetimepicker({
+                                         format: 'd-m-Y H:i',
+                                         step: 15
+                                    });
+                                }); 
+                            </script>
+                         </div>
+                </div>
+
+                <div class="form-label-group">
+                  <input type="text" id="money_user" class="form-control" placeholder="Money" required>
+                  <label for="money_user" id="po">Գումար</label>
+                </div>
+                 <div class="form-label-group">
+                  <input type="text" id="user_car" class="form-control" placeholder="Car Info" required>
+                  <label for="user_car" id="ci">Ավտոմեքենաից տեղեկեւթյուն</label>
+                </div>
+                <div class="form-label-group">
+                  <input type="text" id="user_space" class="form-control" placeholder="Free Space" required>
+                  <label for="user_space" id="fs">Ազատ նստատեղեր</label>
+                </div>
+
+                <div class="form-label-group">
+                  <textarea type="text" id="more_info" rows="4" cols="40" class="form-control" placeholder="More Info"></textarea>
+                </div>
+                <div class="col-md-10">
+
+                  <div id="create_phones"></div>
+
+                  <div class="container">
+                    <div class="row">
+                    <div class="col">
+                  <div><label for="animal" id="animal_info">Ոչ մի կենդանի</label></div>
+                <img onclick="if(can_an == 0){document.getElementById('animal').src = '/static/ot_ims/yes_an.PNG';document.getElementById('animal_info').innerHTML = 'Can Animal';can_an = 1;}else {document.getElementById('animal').src = '/static/ot_ims/no_an.PNG';document.getElementById('animal_info').innerHTML = 'No Animal';can_an = 0;}" id="animal" style="width: 150px;" src="/static/ot_ims/no_an.PNG" class="rounded float-left col-md-10" alt="...">
+                </div>
+
+                <div class="col">
+                <div> <label for="smoking" id="smoking_info">Չի կարելի ծխել</label></div>
+                <img onclick="if(can_smoke == 0){document.getElementById('smoking').src = '/static/ot_ims/cansmoke.PNG';document.getElementById('smoking_info').innerHTML = 'Can Smoke';can_smoke = 1;}else {document.getElementById('smoking').src = '/static/ot_ims/cantsmoke.PNG';document.getElementById('smoking_info').innerHTML = 'Cant Smoke';can_smoke = 0;}" style="width: 150px;" id="smoking" src="/static/ot_ims/cantsmoke.PNG" class="rounded float-left col-md-10" alt="...">
+                </div>
+                <div class="col">
+                <div> <label for="musicing" id="musicing_info">Ոչ մի երաժշտություն</label></div>
+              <img onclick="if(can_music == 0){document.getElementById('musicing').src = '/static/ot_ims/yes_mus.PNG';document.getElementById('musicing_info').innerHTML = 'Yes Music';can_music = 1;}else {document.getElementById('musicing').src = '/static/ot_ims/no_mus.PNG';document.getElementById('musicing_info').innerHTML = 'No Music';can_music = 0;}" id="musicing" style="width: 110px;" src="/static/ot_ims/no_mus.PNG" class="rounded float-left" alt="...">
+             </div>
+              </div>
+            </div>
+              <br><br>
+                <button id="post" style="background-color: #496a90;border-color: #496a90;" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Ստեղծել</button>
+                <button onclick="hide_post()" style="background-color: #496a90;border-color: #496a90;" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" id="dis">Հրաժարվել</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+</div>
+
+</div>
+      <div id="settings_form" style="display: block;" class="container bootstrap snippet">
+
+    <div class="row">
+</div>
+
+        </div><!--/col-9-->
+    </div><!--/row-->
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; TarBer 2020</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Պատրաստ էք հեռանալու?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Ընտրեք ներքևում գտնվող «Ելք» -ը, եթե պատրաստ եք ավարտելու ձեր ընթացիկ նստաշրջանը:</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Չեղարկել</button>
+          <a id="logout" onclick="$.post('/valod');" class="btn btn-primary" >Դուրս գալ</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="static/us_int/vendor/jquery/jquery.min.js"></script>
+  <script src="static/us_int/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="static/us_int/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="static/us_int/js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="static/us_int/vendor/chart.js/Chart.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="static/us_int/js/demo/chart-area-demo.js"></script>
+  <script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
+  <script src="static/us_int/js/demo/chart-pie-demo.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
+
+<script>
+ /* $(function () {
+    $.datetimepicker.setLocale('en');
+    $('#datetimepicker1').datetimepicker();
+    $('#datetimepicker2').datetimepicker();
+ });*/
+
+
+
+
+</script>
+</div>
+
+<script type="text/javascript">
+          var user_got_info; 
+          var full_info;
+          var cur_lang;
+
+ var socket = io.connect('https://codetg.cf')
+
+   socket.on( 'connect', function() {
+	     socket.emit( 'my event', {
+		     ata: 'User Connected'
+			       } )
+	       var form = $( '#sock' ).on( 'submit', function( e ) {
+		       e.preventDefault()
+			           socket.emit( 'gagarin', {
+					         user_name : "a1",
+						       message : "a2"
+							           } )
+		           // empty the input field
+		         } )
+             
+   } )
+socket.on( 'sahak', function( msg ) {
+console.log("GOT RESPONSE")
+$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+
+        $(document).ready(function(){
+
+                  $.getJSON(
+            $SCRIPT_ROOT+"/get_full_posts", // Your AJAX route here
+            function(get_full_posts) {
+                    console.log(get_full_posts);
+                    full_info = get_full_posts;
+
+                });
+                              $.getJSON(
+              $SCRIPT_ROOT+"/user_info", // Your AJAX route here
+              function(user_info) {
+                      
+                      start_program(user_info)
+                  }
+  );
+});
+
+});
+        </script>
+
+
+ <script>
+
+
+  var phone_numbers;
+  var can_smoke = 0;
+  var can_music = 0;
+  var can_an = 0;
+  var curr_username;
+  var phone_verification_code;
+  document.getElementById("new_post_div").style.display = "none";
+    document.getElementById("contact_div").style.display = "none";
+  try{
+    var urlParams = new URLSearchParams(window.location.search);
+    var create_is = urlParams.get('create');
+    if(create_is && String(create_is) == 1){new_post_show()}
+    else{document.getElementById("new_post_div").style.display = "none";}
+  }catch(e){}
+  
+  function do_some(){document.getElementById("new_post_div").style.display = "block";}
+      tuda_show();
+      //document.getElementById("notefic").style.display = "none";
+      document.getElementById("inter_posts").style.display = "none";
+       // document.getElementById("notefic").style.display = "none";
+       // document.getElementById("tud").style.display = "none";
+        function tuda_show(){
+            if(tuda_val.checked == true){document.getElementById("tud").style.display = "block";}
+            else{document.getElementById("tud").style.display = "none";}
+        }
+   // console.log( {{  posts }}  );
+   function close_notefic(){document.getElementById("notefic").style.display = "none";}
+     
+    function new_post_show(){
+      document.getElementById("main_info").style.display = "none";
+      document.getElementById("settings_form").style.display = "none";
+      document.getElementById("new_post_div").style.display = "block";
+      document.getElementById("ways_active").className = "nav-item active";
+      document.getElementById("dash_item").className = "nav-item";
+      document.getElementById("settings_item").className = "nav-item";
+      document.getElementById("security_setting").style.display = "none"
+      document.getElementById("contact_div").style.display = "none"
+  }
+    function hide_post(){
+      document.getElementById("new_post_div").style.display = "none";
+      document.getElementById("content").style.display = "block";
+      document.getElementById("accordionSidebar").style.display = "block";
+      document.getElementById("main_info").style.display = "block";
+      document.getElementById("dash_item").className = "nav-item active";
+      document.getElementById("ways_active").className = "nav-item"
+    }
+
+  function show_contact(){
+
+    document.getElementById("main_info").style.display = "none"
+    document.getElementById("dash_item").className = "nav-item"
+    document.getElementById("settings_item").className = "nav-item active"
+    document.getElementById("ways_active").className = "nav-item"
+    document.getElementById("security_setting").style.display = "none"
+    document.getElementById("contact_div").style.display = "block"
+    document.getElementById("settings_form").style.display = "none"
+
+  }
+
+  function new_phone_add_div(){
+    document.getElementById("contact_phones_div_new").style.display = "block";
+    document.getElementById("contact_phone_add").style.display = "none";
+  }
+  function hide_new_phone_add_div(){
+    document.getElementById("contact_phones_div_new").style.display = "none";
+    document.getElementById("contact_phone_add").style.display = "block";
+  }
+  function verify_new_phone(){
+    if(document.getElementById("new_phone_number").value > 4){
+      phone_verification_code = 1502
+      document.getElementById("number_full_verification1").style.display = "block";
+      document.getElementById("contact_phone_add1").style.display = "none";
+      document.getElementById("number_verification_label").style.display = "block"
+      document.getElementById("number_verification_div").style.display = "block"
+    }
+    else{alert("Number Wrong")}
+  }
+  function verify_new_phone_code(){
+    if(document.getElementById("new_phone_number_code").value == phone_verification_code){
+      document.getElementById("number_verification_label").style.display = "none"
+      document.getElementById("number_verification_div").style.display = "none"
+      document.getElementById("contact_phones_div_new").style.display = "none";
+      $.post("/add_new_phone/" + curr_username + "/" + document.getElementById("new_phone_number").value)
+      window.location.href = "/noto?lang=" + cur_lang;
+    }
+    else{
+      alert("Wrong Code")
+    }
+  }
+
+  function getCount(parent, getChildrensChildren){
+      var relevantChildren = 0;
+      var children = parent.childNodes.length;
+      for(var i=0; i < children; i++){
+          if(parent.childNodes[i].nodeType != 3){
+              if(getChildrensChildren)
+                  relevantChildren += getCount(parent.childNodes[i],true);
+              relevantChildren++;
+          }
+      }
+      return relevantChildren;
+  }
+
+
+  function notefic_sorter(text, lang){
+
+    if(text.split(",")[0] == "1"){
+
+      if(lang == "am"){
+        return("Բարի գալուստ")
+      }
+      else if(lang == "en"){
+        return("Welcome")
+      }
+      else if(lang == "ru"){
+        return("Добро по")
+      }
+      else{
+        return("Բարի գալուստ")
+        console.log("ELSE")
+      }
+
+    }
+
+    else if(text.split(",")[0] == "2"){
+
+      if(lang == "am"){
+        return(text.split(",")[1] + " Վարորդը Հաստատել է ձեր հայտը")
+      }
+      else if(lang == "en"){
+        return(text.split(",")[1] + " Driver accepted your recuest")
+      }
+      else if(lang == "ru"){
+        return(text.split(",")[1] + " Voditel prinyal vas")
+      } 
+      else{
+        return(text.split(",")[1] + " Վարորդը Հաստատել է ձեր հայտը")
+      }
+
+    }
+
+    else if(text.split(",")[0] == "3"){
+
+      if(lang == "am"){
+        return(text.split(",")[1] + " Գնահատեք")
+      }
+      else if(lang == "en"){
+        return(text.split(",")[1] + " Rate")
+      }
+      else if(lang == "ru"){
+        return(text.split(",")[1] + " Ruseren hnahateq")
+      } 
+      else{
+        return(text.split(",")[1] + " Գնահատեք")
+      }
+
+    }
+
+    else if(text.split(",")[0] == "4"){
+
+      if(lang == "am"){
+        return(text.split(",")[1] + " Դուք ընդունել եք")
+      }
+      else if(lang == "en"){
+        return(text.split(",")[1] + " You accepted that request")
+      }
+      else if(lang == "ru"){
+        return(text.split(",")[1] + " Ruseren you accepted that request")
+      } 
+      else{
+        return(text.split(",")[1] + " Դուք ընդունել եք")
+      }
+
+    }
+
+    else if(text.split(",")[0] == "5"){
+
+      if(lang == "am"){
+        return(text.split(",")[1] + " Ուզում է " + text.split(",")[2] + " տեղ պահել " + text.split(",")[3] + "-ից դեպի " + text.split(",")[4])
+      }
+      else if(lang == "en"){
+        return(text.split(",")[1] + " Wants to book " + text.split(",")[2] + " seats from " + text.split(",")[3] + " to " + text.split(",")[4])
+      }
+      else if(lang == "ru"){
+        return(text.split(",")[1] + " Xochet vzyat " + text.split(",")[2] + " seats from " + text.split(",")[3] + " to " + text.split(",")[4])
+      } 
+      else{
+        return(text.split(",")[1] + " Ուզում է " + text.split(",")[2] + " տեղ պահել " + text.split(",")[3] + "-ից դեպի " + text.split(",")[4])
+      }
+
+    }
+
+    else if(text.split(",")[0] == "6"){
+
+      if(lang == "am"){
+        return(text.split(",")[1] + " Հանել է իր պատվերը")
+      }
+      else if(lang == "en"){
+        return(text.split(",")[1] + " Unbooked his(her) order")
+      }
+      else if(lang == "ru"){
+        return(text.split(",")[1] + " Ruseren vzyal ego")
+      } 
+      else{
+        return(text.split(",")[1] + " Հանել է իր պատվերը")
+      }
+
+    }
+
+    else if(text.split(",")[0] == "7"){
+
+      if(lang == "am"){
+        return(text.split(",")[1] + " Մերժել է ձեր հայտը")
+      }
+      else if(lang == "en"){
+        return(text.split(",")[1] + " Deciled your recuest")
+      }
+      else if(lang == "ru"){
+        return(text.split(",")[1] + " Ruseren deciled")
+      } 
+      else{
+        return(text.split(",")[1] + " Մերժել է ձեր հայտը")
+      }
+
+    }
+
+    else if(text.split(",")[0] == "8"){
+
+      if(lang == "am"){
+        return(text.split(",")[1] + " Դուք Մերժել եք")
+      }
+      else if(lang == "en"){
+        return(text.split(",")[1] + " You deciled")
+      }
+      else if(lang == "ru"){
+        return(text.split(",")[1] + " Ruseren you deciled")
+      } 
+      else{
+        return(text.split(",")[1] + " Դուք Մերժել եք")
+      }
+
+    }
+
+    else if(text.split(",")[0] == "9"){
+
+      if(lang == "am"){
+        return(text.split(",")[1] + " Ջնջել է իր երթը " + text.split(",")[2] + "-ից դեպի " + text.split(",")[3])
+      }
+      else if(lang == "en"){
+        return(text.split(",")[1] + " Deleted his post from " + text.split(",")[2] + " to " + text.split(",")[3])
+      }
+      else if(lang == "ru"){
+        return(text.split(",")[1] + " Udalil ego v " + text.split(",")[2] + " k " + text.split(",")[3])
+      } 
+      else{
+        return(text.split(",")[1] + " Ջնջել է իր երթը " + text.split(",")[2] + "-ից դեպի " + text.split(",")[3])
+      }
+
+    }
+
+    else{
+      return("Good luck")
+    }
+
+  }
+
+
+/*
+
+
+//DETECTS PHONE NUMBER IN TEXT
+
+function check_for_phone(){
+    
+      var message = document.getElementById("a").value;
+      var Regex = /\b[\+]?[(]?[0-9]{2,6}[)]?[-\s\.]?[-\s\/\.0-9]{3,15}\b/m; 
+       
+      alert( Regex.test(message) ); 
+      // This will alert 'true' if the textarea contains a phonenumber 
+}
+
+*/
+    function start_program(user_info){
+                            var not_info;
+                      console.log(user_info);
+                      document.getElementById("notefic").innerHTML = "<h6 style='background-color: #496a90;border: 1px solid #496a90;' class='dropdown-header'>Alerts Center</h6>";
+                      //document.getElementById("name").innerHTML = "Name  " + user_info[0][0][0]
+                      //document.getElementById("surname").innerHTML = "Surname  " + user_info[0][0][1]
+                      document.getElementById("first_name").value = user_info[0][0][0];
+                      document.getElementById("last_name").value = user_info[0][0][1];
+                      //document.getElementById("phone").value = user_info[0][0][4];
+                      document.getElementById("sign_birthdat").value = user_info[0][0][7];
+                      document.getElementById("setts_uname").value = user_info[0][0][5];
+                      document.getElementById("name_sname").innerHTML = user_info[0][0][0] + " " + user_info[0][0][1];
+                    //  document.getElementById("mail").innerHTML = "Mail  " + user_info[0][0][4]
+                   //   document.getElementById("uname").innerHTML = "USername  " + user_info[0][0][5]
+                   //   document.getElementById("ret").innerHTML = "Reiting  " + user_info[0][0][2]
+                     // document.getElementById("br_day").innerHTML = "Bday  " + user_info[0][0][7]
+                     var user_lev;
+                     var user_rate;
+                  cur_lang = user_info[0][0][10];
+                     if(user_info[0][0][10] == "en"){anglafication()}
+                     else if(user_info[0][0][10] == "ru"){rusafication()}
+                      else{hayafication()}
+                     if(user_info[0][0][2] - 10 <= 0){user_lev = 1; user_rate = parseInt(user_info[0][0][2]) * 100 / 10}
+                     else if(parseInt(user_info[0][0][2]) - 25 <= 0){user_lev = 2; user_rate = (parseInt(user_info[0][0][2]) - 10) * 100 / 15} 
+                     else if(parseInt(user_info[0][0][2]) - 47 <= 0){user_lev = 3; user_rate = (parseInt(user_info[0][0][2]) - 25) * 100 / 22}
+                     else{user_lev = 4; user_rate = (parseInt(user_info[0][0][2]) - 47) * 100 / 35}
+
+                     document.getElementById("user_rate_parcent").innerHTML = String(parseInt(user_rate)) + "%";
+                     document.getElementById("user_rate_div").style.width = String(user_rate) + "%"
+                     document.getElementById("ar").innerHTML = (user_lev == 1) ? "Սկսնակ" : (user_lev == 2) ? "Նորմալ" : (user_lev == 3) ? "փորձառու" : "Վարպետ" 
+
+                    
+                     var user_phones;
+                     user_phones =  user_info[0][0][4];
+                     for (i in user_phones){user_phones = user_phones.replace("'", '"')}
+                      phone_numbers = JSON.parse(user_phones).length;
+                    if(JSON.parse(user_phones).length == 3){document.getElementById("contact_phone_add").style.display = "none"}
+                      for (j in JSON.parse(user_phones)){
+                        my_in = document.createElement("INPUT")
+                        by_br = document.createElement("br")
+
+                        con_div = document.createElement("div")
+                        con_in = document.createElement("div")
+                        con_input = document.createElement("input")
+                        con_span = document.createElement("SPAN")
+                        con_img = document.createElement("img")
+
+                        cr_div_mb = document.createElement("div")
+                        cr_div_prep = document.createElement("div")
+                        cr_div_text =  document.createElement("div")
+                        cr_div_chck = document.createElement("input")
+                        cr_in_tx = document.createElement("input")
+
+                        cr_div_mb.className = "input-group mb-3"
+                        cr_div_prep.className = "input-group-prepend"
+                        cr_div_text.className = "input-group-text"
+                        cr_div_chck.setAttribute("type", "checkbox")
+                        cr_in_tx.className = "form-control"
+                        cr_in_tx.value = JSON.parse(user_phones)[j]
+                        cr_in_tx.id = String(j) + "check1"
+                        cr_in_tx.readOnly = true
+                        cr_div_chck.id = String(j) + "check"
+                        cr_div_chck.checked = true
+                        if(JSON.parse(user_phones).length < 2){
+                          cr_div_chck.onclick = function(){this.checked = true}
+                        }
+
+                        cr_div_text.appendChild(cr_div_chck)
+                        cr_div_prep.appendChild(cr_div_text)
+                        cr_div_mb.appendChild(cr_div_prep)
+                        cr_div_mb.appendChild(cr_in_tx)
+
+                        document.getElementById("create_phones").appendChild(cr_div_mb)
+
+                        con_div.className = "col-md-8";
+                        con_in.className = "input-group"
+                        con_input.className = "form-control"
+                        con_input.value = JSON.parse(user_phones)[j]
+                        con_input.readOnly = true;
+                        con_span.className = "input-group-addon"
+                        con_span.id = j
+                        con_img.className = "input-group-img"
+                        con_img.src = "/static/img/bin.png"
+
+                        con_span.appendChild(con_img)
+                        con_in.appendChild(con_input)
+                        if(JSON.parse(user_phones).length > 1){con_in.appendChild(con_span)}
+                        con_div.appendChild(con_in)
+
+                        con_span.onclick = function(){
+                          $.post("/delete_user_num/" + curr_username + "/" + this.id)
+                          window.location.href = "/noto?lang=" + cur_lang 
+                        }
+
+                        document.getElementById("contact_phones_div").appendChild(con_div)
+                        document.getElementById("contact_phones_div").appendChild(document.createElement("br"))
+                        document.getElementById("contact_phones_div").appendChild(document.createElement("br"))
+
+                        my_in.value = JSON.parse(user_phones)[j]
+                        my_in.name = "phone"
+                        my_in.className = "form-control"
+                        my_in.readOnly = true;
+                        document.getElementById("user_phones").appendChild(my_in)
+                        document.getElementById("user_phones").appendChild(by_br)
+
+                       }
+                     curr_username = user_info[0][0][5];
+                      document.getElementById("user_image").src = "/static/user_image/" + user_info[0][0][5] + "/a.png"
+                      document.getElementById("user_img").src = "/static/user_image/" + user_info[0][0][5] + "/a.png"
+                      not_info = user_info[0][0][9]
+                      //console.log(not_info[0]);
+                      for(x in user_info[0][0][9]){not_info = not_info.replace("'", '"')}
+                      console.log(not_info);
+                    if(JSON.parse(not_info)[0].length < 1){document.getElementById("unread_notef").style.display = "none";}
+
+                      try{
+                        if (JSON.parse(not_info)[0].length > 0){
+                          document.getElementById("unread_notef").innerHTML = JSON.parse(not_info)[0].length + "+";
+                          document.getElementById("unread_notef").style.display = "block";
+                        }
+                          else{
+                            document.getElementById("unread_notef").style.display = "none";
+                          }
+                        }
+                      
+                      catch(e){
+                        document.getElementById("unread_notef").style.display = "none";
+                      }
+                      var last_info = JSON.parse(not_info)[0].reverse();
+                      var info_not_int = JSON.parse(not_info)[1].reverse();
+                      for(var j = 0; j < last_info.length; j++){
+                          var my_a = document.createElement("A");
+                          var my_div1 = document.createElement("div");
+                          var my_div2 = document.createElement("div");
+                          var my_div3 = document.createElement("div");
+                          var my_div4 = document.createElement("div");
+                          var my_span = document.createElement("SPAN");
+                          var my_i = document.createElement("I");
+                             /* div.style.width = "400px";
+                              div.style.height = "50px";
+                              div.style.background = "red";
+                              div.style.color = "white";*/
+
+                              my_a.id = String(j) + "luck";
+                              my_a.href = "#";
+                              my_a.className = "dropdown-item d-flex align-items-center";
+                              my_div1.className = "mr-3";
+                              my_div2.className = "icon-circle bg-primary";
+                              my_i.className = "fas fa-bell text-white";
+                              my_div2.appendChild(my_i);
+                              my_div1.appendChild(my_div2);
+                              my_div3.className = "small text-gray-500";
+                              my_div3.innerHTML = "orm";
+                              my_span.className = "font-weight-bold";
+                              my_span.innerHTML =  notefic_sorter(last_info[j].split("||||")[0], cur_lang);
+                              my_span.id = String(j) + "luck1"
+                              my_span.value = last_info[j].split("||||")[0]
+                              my_a.appendChild(my_div1)
+                              my_div4.appendChild(my_div3)
+                              my_div4.appendChild(my_span)
+                              my_a.appendChild(my_div4)
+                              //div.innerHTML = last_info[j].split("||||")[0];
+                              console.log(last_info[j]);
+                              document.getElementById("notefic").appendChild(my_a);
+                              if(last_info[j].split("||||")[0][last_info[j].split("||||")[0].length - 1] == "!" && String(last_info[j].split("||||")[2]) == "1"){
+                                  var agree = document.createElement("BUTTON");
+                                  var decil = document.createElement("BUTTON");
+                                  agree.innerHTML = "Agree";
+                                  decil.innerHTML = "Decil";
+                                  agree.className = "btn btn-success notef_button"
+                                  decil.className = "btn btn-danger notef_button1 float-lg-right"
+                                  agree.value = last_info[j].split("||||")[1] + "|||" + last_info[j].split(",")[1] + "|||" + last_info[j].split(",")[2]
+                                  decil.value = last_info[j].split("||||")[1] + "|||" + last_info[j].split(",")[1] 
+                                  agree.onclick = function (){
+                                    update_values();
+                                      $.post("/book_agree/" + curr_username + "|||" + this.value);
+                                      update_values();
+                                      setTimeout(update_values, 1000);
+                                      update_values();
+                                      //+ last_info[j].split("||||")[1]
+                                      //+ "|||" + last_info[j].split(" ")[0] 
+                                  };
+                                  decil.onclick = function (){
+                                    update_values();
+                                      $.post("/book_decil/" + curr_username + "|||" + this.value);
+                                      update_values();
+                                      setTimeout(update_values, 1000);
+                                      update_values();
+                                  };
+                                  //document.getElementById(String(j) + "luck").appendChild(agree);
+                                  //document.getElementById(String(j) + "luck").appendChild(decil);
+                                  my_div4.appendChild(document.createElement("br"));
+                                  my_div4.appendChild(agree);
+                                  my_div4.appendChild(decil);
+                                  console.log("passed");
+                              }
+
+                              if(last_info[j].split("&").length > 1){
+                                var fild = document.createElement("FIELDSET");
+                                var x1 = document.createElement("INPUT");
+                                var x2 = document.createElement("INPUT");
+                                var x3 = document.createElement("INPUT");
+                                var x4 = document.createElement("INPUT");
+                                var x5 = document.createElement("INPUT");
+                                var x6 = document.createElement("INPUT");
+                                var x7 = document.createElement("INPUT");
+                                var x8 = document.createElement("INPUT");
+                                var x9 = document.createElement("INPUT");
+                                var x10 = document.createElement("INPUT");
+
+                                var y1 = document.createElement("LABEL");
+                                var y2 = document.createElement("LABEL");
+                                var y3 = document.createElement("LABEL");
+                                var y4 = document.createElement("LABEL");
+                                var y5 = document.createElement("LABEL");
+                                var y6 = document.createElement("LABEL");
+                                var y7 = document.createElement("LABEL");
+                                var y8 = document.createElement("LABEL");
+                                var y9 = document.createElement("LABEL");
+                                var y10 = document.createElement("LABEL");
+
+                                y1.className = "full";
+                                y1.htmlFor = "star5" + last_info[j].split("&")[1];
+                                y1.title = "5";
+
+                                y2.className = "half";
+                                y2.htmlFor = "star4half" + last_info[j].split("&")[1];
+                                y2.title = "4.5";
+
+                                y3.className = "full";
+                                y3.htmlFor = "star4" + last_info[j].split("&")[1];
+                                y3.title = "4";
+
+                                y4.className = "half";
+                                y4.htmlFor = "star3half" + last_info[j].split("&")[1];
+                                y4.title = "3.5";
+
+                                y5.className = "full";
+                                y5.htmlFor = "star3" + last_info[j].split("&")[1];
+                                y5.title = "3";
+
+                                y6.className = "half";
+                                y6.htmlFor = "star2half" + last_info[j].split("&")[1];
+                                y6.title = "2.5";
+
+                                y7.className = "full";
+                                y7.htmlFor = "star2" + last_info[j].split("&")[1];
+                                y7.title = "2";
+
+                                y8.className = "half";
+                                y8.htmlFor = "star1half" + last_info[j].split("&")[1];
+                                y8.title = "1.5";
+
+                                y9.className = "full";
+                                y9.htmlFor = "star1" + last_info[j].split("&")[1];
+                                y9.title = "1";
+
+                                y10.className = "half";
+                                y10.htmlFor = "starhalf" + last_info[j].split("&")[1];
+                                y10.title = "0.5";
+
+
+                                x1.setAttribute("type", "radio");
+                                x1.id = "star5" + last_info[j].split("&")[1];
+                                x1.value = "5";
+                                x1.name = "rating";
+
+                                x2.setAttribute("type", "radio");
+                                x2.id = "star4half" + last_info[j].split("&")[1];
+                                x2.value = "4 and a half";
+                                x2.name = "rating";
+
+                                x3.setAttribute("type", "radio");
+                                x3.id = "star4" + last_info[j].split("&")[1];
+                                x3.value = "4";
+                                x3.name = "rating";
+
+                                x4.setAttribute("type", "radio");
+                                x4.id = "star3half" + last_info[j].split("&")[1];
+                                x4.value = "3 and a half";
+                                x4.name = "rating";
+
+                                x5.setAttribute("type", "radio");
+                                x5.id = "star3" + last_info[j].split("&")[1];
+                                x5.value = "3";
+                                x5.name = "rating";
+
+                                x6.setAttribute("type", "radio");
+                                x6.id = "star2half" + last_info[j].split("&")[1];
+                                x6.value = "2 and a half";
+                                x6.name = "rating";
+
+                                x7.setAttribute("type", "radio");
+                                x7.id = "star2" + last_info[j].split("&")[1];
+                                x7.value = "2";
+                                x7.name = "rating";
+
+                                x8.setAttribute("type", "radio");
+                                x8.id = "star1half" + last_info[j].split("&")[1];
+                                x8.value = "1 ans a half";
+                                x8.name = "rating";
+
+                                x9.setAttribute("type", "radio");
+                                x9.id = "star1" + last_info[j].split("&")[1];
+                                x9.value = "1";
+                                x9.name = "rating";
+
+                                x10.setAttribute("type", "radio");
+                                x10.id = "starhalf" + last_info[j].split("&")[1];
+                                x10.value = "half";
+                                x10.name = "rating";
+
+                                fild.value = last_info[j].split("&")[1]
+                                fild.className = "rating"
+                                fild.appendChild(x1);
+                                fild.appendChild(y1);
+                                fild.appendChild(x2);
+                                fild.appendChild(y2);
+                                fild.appendChild(x3);
+                                fild.appendChild(y3);
+                                fild.appendChild(x4);
+                                fild.appendChild(y4);
+                                fild.appendChild(x5);
+                                fild.appendChild(y5);
+                                fild.appendChild(x6);
+                                fild.appendChild(y6);
+                                fild.appendChild(x7);
+                                fild.appendChild(y7);
+                                fild.appendChild(x8);
+                                fild.appendChild(y8);
+                                fild.appendChild(x9);
+                                fild.appendChild(y9);
+                                fild.appendChild(x10);
+                                fild.appendChild(y10);
+                                
+
+                                fild.onclick = function (){
+                                      var my_rate = 0;
+                                      if(document.getElementById('star5' + this.value).checked){my_rate = 5;}
+                                      else if(document.getElementById('star4half' + this.value).checked){my_rate = 4.5;}
+                                      else if(document.getElementById('star4' + this.value).checked){my_rate = 4;}
+                                      else if(document.getElementById('star3half' + this.value).checked){my_rate = 3.5;}
+                                      else if(document.getElementById('star3' + this.value).checked){my_rate = 3;}
+                                      else if(document.getElementById('star2half' + this.value).checked){my_rate = 2.5;}
+                                      else if(document.getElementById('star2' + this.value).checked){my_rate = 2;}
+                                      else if(document.getElementById('star1half' + this.value).checked){my_rate = 1.5;}
+                                      else if(document.getElementById('star1' + this.value).checked){my_rate = 1;}
+                                      else if(document.getElementById('starhalf' + this.value).checked){my_rate = 0.5;}
+                                      $.post("/rate_user/" + this.value + "/" + my_rate + "/" + curr_username)
+                                      update_values();
+                                      setTimeout(update_values, 1000);
+                                      console.log(my_rate)
+                                  };
+                              my_div4.appendChild(fild);
+                              }
+                              
+                      }
+                      for(var j = 0; j < info_not_int.length; j++){
+                          var my_a = document.createElement("A");
+                          var my_div1 = document.createElement("div");
+                          var my_div2 = document.createElement("div");
+                          var my_div3 = document.createElement("div");
+                          var my_div4 = document.createElement("div");
+                          var my_span = document.createElement("SPAN");
+                          var my_i = document.createElement("I");
+                             /* div.style.width = "400px";
+                              div.style.height = "50px";
+                              div.style.background = "red";
+                              div.style.color = "white";*/
+
+                              my_a.id = String(j) + "luck";
+                              my_a.href = "#";
+                              my_a.className = "dropdown-item d-flex align-items-center";
+                              my_div1.className = "mr-3";
+                              my_div2.className = "icon-circle bg-primary";
+                              my_i.className = "fas fa-bell text-white";
+                              my_div2.appendChild(my_i);
+                              my_div1.appendChild(my_div2);
+                              my_div3.className = "small text-gray-500";
+                              my_div3.innerHTML = "orm";
+                              my_span.className = "font-weight";
+                              my_span.innerHTML = notefic_sorter(info_not_int[j].split("||||")[0].split("&")[0], cur_lang);
+                              my_span.id = String(j) + "luck1"
+                              my_span.value = info_not_int[j].split("||||")[0].split("&")[0]
+                              my_a.appendChild(my_div1)
+                              my_div4.appendChild(my_div3)
+                              my_div4.appendChild(my_span)
+                              my_a.appendChild(my_div4)
+                              //div.innerHTML = last_info[j].split("||||")[0];
+                              console.log(last_info[j]);
+                              document.getElementById("notefic").appendChild(my_a);
+                              console.log(info_not_int[j])
+                              if(info_not_int[j].split("||||")[0][info_not_int[j].split("||||")[0].length - 1] == "!" && String(info_not_int[j].split("||||")[2]) == "1"){
+                                  var agree = document.createElement("BUTTON");
+                                  var decil = document.createElement("BUTTON");
+                                  agree.innerHTML = "Agree";
+                                  decil.innerHTML = "Decil";
+                                  agree.className = "btn btn-success notef_button"
+                                  decil.className = "btn btn-danger notef_button1 float-lg-right"
+                                  agree.value = info_not_int[j].split("||||")[1] + "|||" + info_not_int[j].split(",")[1] + "|||" + info_not_int[j].split(",")[2]
+                                  decil.value = info_not_int[j].split("||||")[1] + "|||" + info_not_int[j].split(",")[1] 
+                                  agree.onclick = function (){
+                                    update_values();
+                                      $.post("/book_agree/" + curr_username + "|||" + this.value);
+                                      update_values();
+                                      setTimeout(update_values, 1000);
+                                      update_values();
+                                      //+ last_info[j].split("||||")[1]
+                                      //+ "|||" + last_info[j].split(" ")[0] 
+                                  };
+                                  decil.onclick = function (){
+                                    update_values();
+                                      $.post("/book_decil/" + curr_username + "|||" + this.value);
+                                      update_values();
+                                      setTimeout(update_values, 1000);
+                                      update_values();
+                                  };
+                                  //document.getElementById(String(j) + "luck").appendChild(agree);
+                                  //document.getElementById(String(j) + "luck").appendChild(decil);
+                                  my_div4.appendChild(document.createElement("br"));
+                                  my_div4.appendChild(agree);
+                                  my_div4.appendChild(decil);
+                                  console.log("passed");
+                              }
+                              if(info_not_int[j].split("&").length > 1){
+                                var fild = document.createElement("FIELDSET");
+                                var x1 = document.createElement("INPUT");
+                                var x2 = document.createElement("INPUT");
+                                var x3 = document.createElement("INPUT");
+                                var x4 = document.createElement("INPUT");
+                                var x5 = document.createElement("INPUT");
+                                var x6 = document.createElement("INPUT");
+                                var x7 = document.createElement("INPUT");
+                                var x8 = document.createElement("INPUT");
+                                var x9 = document.createElement("INPUT");
+                                var x10 = document.createElement("INPUT");
+
+                                var y1 = document.createElement("LABEL");
+                                var y2 = document.createElement("LABEL");
+                                var y3 = document.createElement("LABEL");
+                                var y4 = document.createElement("LABEL");
+                                var y5 = document.createElement("LABEL");
+                                var y6 = document.createElement("LABEL");
+                                var y7 = document.createElement("LABEL");
+                                var y8 = document.createElement("LABEL");
+                                var y9 = document.createElement("LABEL");
+                                var y10 = document.createElement("LABEL");
+
+                                y1.className = "full";
+                                y1.htmlFor = "star5" + info_not_int[j].split("&")[1];
+                                y1.title = "5";
+
+                                y2.className = "half";
+                                y2.htmlFor = "star4half" + info_not_int[j].split("&")[1];
+                                y2.title = "4.5";
+
+                                y3.className = "full";
+                                y3.htmlFor = "star4" + info_not_int[j].split("&")[1];
+                                y3.title = "4";
+
+                                y4.className = "half";
+                                y4.htmlFor = "star3half" + info_not_int[j].split("&")[1];
+                                y4.title = "3.5";
+
+                                y5.className = "full";
+                                y5.htmlFor = "star3" + info_not_int[j].split("&")[1];
+                                y5.title = "3";
+
+                                y6.className = "half";
+                                y6.htmlFor = "star2half" + info_not_int[j].split("&")[1];
+                                y6.title = "2.5";
+
+                                y7.className = "full";
+                                y7.htmlFor = "star2" + info_not_int[j].split("&")[1];
+                                y7.title = "2";
+
+                                y8.className = "half";
+                                y8.htmlFor = "star1half" + info_not_int[j].split("&")[1];
+                                y8.title = "1.5";
+
+                                y9.className = "full";
+                                y9.htmlFor = "star1" + info_not_int[j].split("&")[1];
+                                y9.title = "1";
+
+                                y10.className = "half";
+                                y10.htmlFor = "starhalf" + info_not_int[j].split("&")[1];
+                                y10.title = "0.5";
+
+
+                                x1.setAttribute("type", "radio");
+                                x1.id = "star5" + info_not_int[j].split("&")[1];
+                                x1.value = "5";
+                                x1.name = "rating";
+
+                                x2.setAttribute("type", "radio");
+                                x2.id = "star4half" + info_not_int[j].split("&")[1];
+                                x2.value = "4 and a half";
+                                x2.name = "rating";
+
+                                x3.setAttribute("type", "radio");
+                                x3.id = "star4" + info_not_int[j].split("&")[1];
+                                x3.value = "4";
+                                x3.name = "rating";
+
+                                x4.setAttribute("type", "radio");
+                                x4.id = "star3half" + info_not_int[j].split("&")[1];
+                                x4.value = "3 and a half";
+                                x4.name = "rating";
+
+                                x5.setAttribute("type", "radio");
+                                x5.id = "star3" + info_not_int[j].split("&")[1];
+                                x5.value = "3";
+                                x5.name = "rating";
+
+                                x6.setAttribute("type", "radio");
+                                x6.id = "star2half" + info_not_int[j].split("&")[1];
+                                x6.value = "2 and a half";
+                                x6.name = "rating";
+
+                                x7.setAttribute("type", "radio");
+                                x7.id = "star2" + info_not_int[j].split("&")[1];
+                                x7.value = "2";
+                                x7.name = "rating";
+
+                                x8.setAttribute("type", "radio");
+                                x8.id = "star1half" + info_not_int[j].split("&")[1];
+                                x8.value = "1 ans a half";
+                                x8.name = "rating";
+
+                                x9.setAttribute("type", "radio");
+                                x9.id = "star1" + info_not_int[j].split("&")[1];
+                                x9.value = "1";
+                                x9.name = "rating";
+
+                                x10.setAttribute("type", "radio");
+                                x10.id = "starhalf" + info_not_int[j].split("&")[1];
+                                x10.value = "half";
+                                x10.name = "rating";
+
+                                fild.value = info_not_int[j].split("&")[1]
+                                fild.className = "rating"
+                                fild.appendChild(x1);
+                                fild.appendChild(y1);
+                                fild.appendChild(x2);
+                                fild.appendChild(y2);
+                                fild.appendChild(x3);
+                                fild.appendChild(y3);
+                                fild.appendChild(x4);
+                                fild.appendChild(y4);
+                                fild.appendChild(x5);
+                                fild.appendChild(y5);
+                                fild.appendChild(x6);
+                                fild.appendChild(y6);
+                                fild.appendChild(x7);
+                                fild.appendChild(y7);
+                                fild.appendChild(x8);
+                                fild.appendChild(y8);
+                                fild.appendChild(x9);
+                                fild.appendChild(y9);
+                                fild.appendChild(x10);
+                                fild.appendChild(y10);
+                                
+
+                                fild.onclick = function (){
+                                      var my_rate = 0;
+                                      if(document.getElementById('star5' + this.value).checked){my_rate = 5;$.post("/rate_user/" + this.value + "/" + String(my_rate) + "/" + curr_username);}
+                                      else if(document.getElementById('star4half' + this.value).checked){my_rate = 4.5;$.post("/rate_user/" + this.value + "/" + String(my_rate) + "/" + curr_username);}
+                                      else if(document.getElementById('star4' + this.value).checked){my_rate = 4;$.post("/rate_user/" + this.value + "/" + String(my_rate) + "/" + curr_username);}
+                                      else if(document.getElementById('star3half' + this.value).checked){my_rate = 3.5;$.post("/rate_user/" + this.value + "/" + String(my_rate) + "/" + curr_username);}
+                                      else if(document.getElementById('star3' + this.value).checked){my_rate = 3;$.post("/rate_user/" + this.value + "/" + String(my_rate) + "/" + curr_username);}
+                                      else if(document.getElementById('star2half' + this.value).checked){my_rate = 2.5;$.post("/rate_user/" + this.value + "/" + String(my_rate) + "/" + curr_username);}
+                                      else if(document.getElementById('star2' + this.value).checked){my_rate = 2;$.post("/rate_user/" + this.value + "/" + String(my_rate) + "/" + curr_username);}
+                                      else if(document.getElementById('star1half' + this.value).checked){my_rate = 1.5;$.post("/rate_user/" + this.value + "/" + String(my_rate) + "/" + curr_username);}
+                                      else if(document.getElementById('star1' + this.value).checked){my_rate = 1;$.post("/rate_user/" + this.value + "/" + String(my_rate) + "/" + curr_username);}
+                                      else if(document.getElementById('starhalf' + this.value).checked){my_rate = 0.5;$.post("/rate_user/" + this.value + "/" + String(my_rate) + "/" + curr_username);}
+                                      update_values();
+                                      setTimeout(update_values, 1000);
+                                      console.log(my_rate)
+                                  };
+                              my_div4.appendChild(fild);
+                              }
+                              
+                      }
+
+                      var my_a1 = document.createElement("A");
+                      my_a1.className = "dropdown-item text-center small text-gray-500";
+                      my_a1.innerHTML = "Show All Alerts";
+                      document.getElementById("notefic").appendChild(my_a1);
+                      /*for(var k = 0; k < info_not_int.length; k++){
+                          var div = document.createElement("div");
+                              div.style.width = "400px";
+                              div.style.height = "50px";
+                              div.style.background = "green";
+                              div.style.color = "white";
+                              div.id = String(k) + "luckk"
+                              div.innerHTML = info_not_int[k].split("||||")[0];
+                              document.getElementById("notefic").appendChild(div);
+                              //console.log("yoo",  (info_not_int[k]);
+                          if(info_not_int[k].split("||||")[0][info_not_int[k].split("||||")[0].length - 1] == "!" && String(info_not_int[k].split("||||")[2]) == "1"){
+                                  var agree = document.createElement("BUTTON");
+                                  var decil = document.createElement("BUTTON");
+                                  agree.innerHTML = "Agree";
+                                  decil.innerHTML = "Decil";
+                                  agree.value = info_not_int[k].split("||||")[1] + "|||" + info_not_int[k].split(" ")[0] + "|||" + info_not_int[k].split(" ")[4]
+                                  decil.value = info_not_int[k].split("||||")[1] + "|||" + info_not_int[k].split(" ")[0] 
+                                  agree.onclick = function (){
+                                      $.post("/book_agree/" + curr_username + "|||" + this.value);
+                                      //+ last_info[j].split("||||")[1]
+                                      //+ "|||" + last_info[j].split(" ")[0] 
+                                  };
+                                  decil.onclick = function (){
+                                      $.post("/book_decil/" + curr_username + this.value);
+                                  };
+                                  document.getElementById(String(k) + "luckk").appendChild(agree);
+                                  document.getElementById(String(k) + "luckk").appendChild(decil);
+                                  console.log("passed");
+                              }
+
+                      }*/
+                      console.log(user_info[1])
+                      full_info = user_info[1];
+                      for(var i = 0; i < user_info[1].length; i++){
+                          var key;
+                              console.log(user_info[1][i])
+                             var div = document.createElement("div");
+                              div.style.width = "200px";
+                              div.style.height = "50px";
+                              div.style.background = "red";
+                              div.style.color = "white";
+                              div.innerHTML = user_info[1][i][1]  + user_info[1][i][2]
+                              div.id = String(i) + "asd"
+                              div.value = user_info[1][i][0]
+                              div.onclick = function () {$.post("/get_quest/" + document.getElementById(this.id).value);document.getElementById("quest").submit();};
+                              document.getElementById("inter_posts").appendChild(div);
+                      }
+    }
+
+    $(document).ready(function() {
+                var jq_tes = 5;
+          console.log(jq_tes)
+        $('#post').click(function() {
+          post_nums = [document.getElementById("0check1").value]
+          try{
+            if(document.getElementById("1check").checked){
+              post_nums.push(document.getElementById("1check1").value)
+            }
+          }
+          catch(e){}
+          try{
+            if(document.getElementById("2check").checked){
+              post_nums.push(document.getElementById("2check1").value)
+            }
+          }
+          catch(e){}
+          qunm = JSON.stringify(post_nums)
+          for(n in qunm){qunm = qunm.replace('"', "'")}
+       $.post("/new_posts/" + document.getElementById("mek").value + "$$$" + document.getElementById("erku").value + "$$$" + document.getElementById("datetimepicker4").value + "$$$" + document.getElementById("datetimepicker5").value + "$$$" + document.getElementById("money_user").value + "$$$" + document.getElementById("user_car").value + "$$$" + document.getElementById("user_space").value + "$$$" + JSON.stringify(post_nums) + "$$$" + document.getElementById("more_info").value.replace(/\r?\n/g, '%@') + "$$$" + curr_username + "$$$" + can_smoke + "$$$" + can_music + "$$$" + can_an + "/" + (document.getElementById("tuda_val").checked));
+       hide_post();
+
+        });
+        $('#notefication').click(function() { 
+            $.post("/read_notefic/" + curr_username);
+            document.getElementById("unread_notef").style.display = "none";
+            //document.getElementById("sock").submit();
+           // console.log("KILL you")
+      });
+
+                $('#logout').click(function() { 
+            $.post("/do_log");
+            setTimeout(go_outo, 1500);
+            
+        });
+    });
+
+
+
+    function go_outo(){document.getElementById("logo_out").submit()}
+function update_values(){document.getElementById("sock_click").click();console.log("WHANTS TO UPDATE");}
+        $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+
+        (function(){
+
+  $("li").on("click",function() {
+      console.log("Li clicked")
+  });
+if(window.location.href.split("?").length < 3){
+
+                              $.getJSON(
+              $SCRIPT_ROOT+"/user_info", // Your AJAX route here
+              function(user_info) {
+
+                    start_program(user_info)
+
+                  }
+
+
+
+  );
+    $("save_password").click(function(){
+      if(document.getElementById("previous_password").value == password_previous){
+        $.post("/update_user_password/" + curr_username + "/" + document.getElementById("new_password").value)
+      }
+
+    });
+}
+else if(window.location.href.split("?").length > 2 && window.location.href.split("?")[2].split("=")[0] == "us_im"){
+
+                                $.getJSON(
+              $SCRIPT_ROOT+"/user_info", // Your AJAX route here
+              function(user_info) {
+                      var not_info;
+                      console.log(user_info);
+                      //document.getElementById("name").innerHTML = "Name  " + user_info[0][0][0]
+                      //document.getElementById("surname").innerHTML = "Surname  " + user_info[0][0][1]
+                      document.getElementById("name_sname").innerHTML = user_info[0][0][0] + " " + user_info[0][0][1]
+                    //  document.getElementById("mail").innerHTML = "Mail  " + user_info[0][0][4]
+                   //   document.getElementById("uname").innerHTML = "USername  " + user_info[0][0][5]
+                   //   document.getElementById("ret").innerHTML = "Reiting  " + user_info[0][0][2]
+                     // document.getElementById("br_day").innerHTML = "Bday  " + user_info[0][0][7]
+                     curr_username = user_info[0][0][5];
+                      document.getElementById("user_image").src = "/static/user_image/" + user_info[0][0][5] + "/a.png"
+                      not_info = user_info[0][0][9]
+                      console.log(not_info);
+                      for(x in user_info[0][0][9]){not_info = not_info.replace("'", '"')}
+                      console.log(not_info);
+                      if(JSON.parse(not_info)[0].length == 0){document.getElementById("unread_notef").style.display = "none";}
+                      else{document.getElementById("unread_notef").innerHTML = JSON.parse(not_info)[0].length + "+";document.getElementById("unread_notef").style.display = "block";}
+                      
+                      var last_info = JSON.parse(not_info)[0].reverse();
+                      var info_not_int = JSON.parse(not_info)[1].reverse();
+                      for(var j = 0; j < last_info.length; j++){
+                          var my_a = document.createElement("A");
+                          var my_div1 = document.createElement("div");
+                          var my_div2 = document.createElement("div");
+                          var my_div3 = document.createElement("div");
+                          var my_div4 = document.createElement("div");
+                          var my_span = document.createElement("SPAN");
+                          var my_i = document.createElement("I");
+                             /* div.style.width = "400px";
+                              div.style.height = "50px";
+                              div.style.background = "red";
+                              div.style.color = "white";*/
+
+                              my_a.id = String(j) + "luck";
+                              my_a.href = "#";
+                              my_a.className = "dropdown-item d-flex align-items-center";
+                              my_div1.className = "mr-3";
+                              my_div2.className = "icon-circle bg-primary";
+                              my_i.className = "fas fa-file-alt text-white";
+                              my_div2.appendChild(my_i);
+                              my_div1.appendChild(my_div2);
+                              my_div3.className = "small text-gray-500";
+                              my_div3.innerHTML = "orm";
+                              my_span.className = "font-weight-bold";
+                              my_span.innerHTML = notefic_sorter(last_info[j].split("||||")[0], cur_lang);
+                              my_span.id = String(j) + "luck1"
+                              my_span.value = last_info[j].split("||||")[0]
+                              my_a.appendChild(my_div1)
+                              my_div4.appendChild(my_div3)
+                              my_div4.appendChild(my_span)
+                              my_a.appendChild(my_div4)
+                              //div.innerHTML = last_info[j].split("||||")[0];
+                              console.log(last_info[j]);
+                              document.getElementById("notefic").appendChild(my_a);
+                              if(last_info[j].split("||||")[0][last_info[j].split("||||")[0].length - 1] == "!" && String(last_info[j].split("||||")[2]) == "1"){
+                                  var agree = document.createElement("BUTTON");
+                                  var decil = document.createElement("BUTTON");
+                                  agree.innerHTML = "Agree";
+                                  decil.innerHTML = "Decil";
+                                  agree.className = "btn btn-success notef_button"
+                                  decil.className = "btn btn-danger notef_button1 float-lg-right"
+                                  agree.value = last_info[j].split("||||")[1] + "|||" + last_info[j].split(" ")[0] + "|||" + last_info[j].split(" ")[4]
+                                  decil.value = last_info[j].split("||||")[1] + "|||" + last_info[j].split(" ")[0] 
+                                  agree.onclick = function (){
+                                    update_values();
+                                      $.post("/book_agree/" + curr_username + "|||" + this.value);
+                                      update_values();
+                                      setTimeout(update_values(), 1000)
+                                      update_values();
+                                      //+ last_info[j].split("||||")[1]
+                                      //+ "|||" + last_info[j].split(" ")[0] 
+                                  };
+                                  decil.onclick = function (){
+                                    update_values();
+                                      $.post("/book_decil/" + curr_username + "|||" + this.value);
+                                      update_values();
+                                      setTimeout(update_values(), 1000);
+                                      update_values();
+                                  };
+                                  //document.getElementById(String(j) + "luck").appendChild(agree);
+                                  //document.getElementById(String(j) + "luck").appendChild(decil);
+                                  my_div4.appendChild(document.createElement("br"));
+                                  my_div4.appendChild(agree);
+                                  my_div4.appendChild(decil);
+                                  console.log("passed");
+                              }
+                              
+                      }
+                      for(var j = 0; j < info_not_int.length; j++){
+                          var my_a = document.createElement("A");
+                          var my_div1 = document.createElement("div");
+                          var my_div2 = document.createElement("div");
+                          var my_div3 = document.createElement("div");
+                          var my_div4 = document.createElement("div");
+                          var my_span = document.createElement("SPAN");
+                          var my_i = document.createElement("I");
+                             /* div.style.width = "400px";
+                              div.style.height = "50px";
+                              div.style.background = "red";
+                              div.style.color = "white";*/
+
+                              my_a.id = String(j) + "luck";
+                              my_a.href = "#";
+                              my_a.className = "dropdown-item d-flex align-items-center";
+                              my_div1.className = "mr-3";
+                              my_div2.className = "icon-circle bg-primary";
+                              my_i.className = "fas fa-file-alt text-white";
+                              my_div2.appendChild(my_i);
+                              my_div1.appendChild(my_div2);
+                              my_div3.className = "small text-gray-500";
+                              my_div3.innerHTML = "orm";
+                              my_span.className = "font-weight";
+                              my_span.innerHTML = notefic_sorter(info_not_int[j].split("||||")[0], cur_lang);
+                              my_span.id = String(j) + "luck1"
+                              my_span.value = info_not_int[j].split("||||")[0]
+                              my_a.appendChild(my_div1)
+                              my_div4.appendChild(my_div3)
+                              my_div4.appendChild(my_span)
+                              my_a.appendChild(my_div4)
+                              //div.innerHTML = last_info[j].split("||||")[0];
+                              console.log(last_info[j]);
+                              document.getElementById("notefic").appendChild(my_a);
+                              if(info_not_int[j].split("||||")[0][info_not_int[j].split("||||")[0].length - 1] == "!" && String(info_not_int[j].split("||||")[2]) == "1"){
+                                  var agree = document.createElement("BUTTON");
+                                  var decil = document.createElement("BUTTON");
+                                  agree.innerHTML = "Agree";
+                                  decil.innerHTML = "Decil";
+                                  agree.className = "btn btn-success notef_button"
+                                  decil.className = "btn btn-danger notef_button1 float-lg-right"
+                                  agree.value = info_not_int[j].split("||||")[1] + "|||" + info_not_int[j].split(" ")[0] + "|||" + info_not_int[j].split(" ")[4]
+                                  decil.value = info_not_int[j].split("||||")[1] + "|||" + info_not_int[j].split(" ")[0] 
+                                  agree.onclick = function (){
+                                    update_values();
+                                      $.post("/book_agree/" + curr_username + "|||" + this.value);
+                                      update_values();
+                                      setTimeout(update_values(), 1000);
+                                      update_values();
+                                      //+ last_info[j].split("||||")[1]
+                                      //+ "|||" + last_info[j].split(" ")[0] 
+                                  };
+                                  decil.onclick = function (){
+                                      $.post("/book_decil/" + curr_username + "|||" + this.value);
+                                  };
+                                  //document.getElementById(String(j) + "luck").appendChild(agree);
+                                  //document.getElementById(String(j) + "luck").appendChild(decil);
+                                  my_div4.appendChild(document.createElement("br"));
+                                  my_div4.appendChild(agree);
+                                  my_div4.appendChild(decil);
+                                  console.log("passed");
+                              }
+                              
+                      }
+
+                      var my_a1 = document.createElement("A");
+                      my_a1.className = "dropdown-item text-center small text-gray-500";
+                      my_a1.innerHTML = "Show All Alerts";
+                      document.getElementById("notefic").appendChild(my_a1);
+                      /*for(var k = 0; k < info_not_int.length; k++){
+                          var div = document.createElement("div");
+                              div.style.width = "400px";
+                              div.style.height = "50px";
+                              div.style.background = "green";
+                              div.style.color = "white";
+                              div.id = String(k) + "luckk"
+                              div.innerHTML = info_not_int[k].split("||||")[0];
+                              document.getElementById("notefic").appendChild(div);
+                              //console.log("yoo",  (info_not_int[k]);
+                          if(info_not_int[k].split("||||")[0][info_not_int[k].split("||||")[0].length - 1] == "!" && String(info_not_int[k].split("||||")[2]) == "1"){
+                                  var agree = document.createElement("BUTTON");
+                                  var decil = document.createElement("BUTTON");
+                                  agree.innerHTML = "Agree";
+                                  decil.innerHTML = "Decil";
+                                  agree.value = info_not_int[k].split("||||")[1] + "|||" + info_not_int[k].split(" ")[0] + "|||" + info_not_int[k].split(" ")[4]
+                                  decil.value = info_not_int[k].split("||||")[1] + "|||" + info_not_int[k].split(" ")[0] 
+                                  agree.onclick = function (){
+                                      $.post("/book_agree/" + curr_username + "|||" + this.value);
+                                      //+ last_info[j].split("||||")[1]
+                                      //+ "|||" + last_info[j].split(" ")[0] 
+                                  };
+                                  decil.onclick = function (){
+                                      $.post("/book_decil/" + curr_username + this.value);
+                                  };
+                                  document.getElementById(String(k) + "luckk").appendChild(agree);
+                                  document.getElementById(String(k) + "luckk").appendChild(decil);
+                                  console.log("passed");
+                              }
+
+                      }*/
+                      console.log(user_info[1])
+                      full_info = user_info[1];
+                      for(var i = 0; i < user_info[1].length; i++){
+                          var key;
+                              console.log(user_info[1][i])
+                             var div = document.createElement("div");
+                              div.style.width = "200px";
+                              div.style.height = "50px";
+                              div.style.background = "red";
+                              div.style.color = "white";
+                              div.innerHTML = user_info[1][i][1]  + user_info[1][i][2]
+                              div.id = String(i) + "asd"
+                              div.value = user_info[1][i][0]
+                              div.onclick = function () {$.post("/get_quest/" + document.getElementById(this.id).value);document.getElementById("quest").submit();};
+                              document.getElementById("inter_posts").appendChild(div);
+                      }
+                  }
+  );
+
+
+}
+                //  setTimeout(arguments.callee, 1000);
+        })();
+
+function hide_settings(){
+  document.getElementById("main_info").style.display = "block"
+  document.getElementById("settings_form").style.display = "block"
+  document.getElementById("new_post_div").style.display = "none";
+  document.getElementById("dash_item").className = "nav-item active"
+  document.getElementById("settings_item").className = "nav-item"
+  document.getElementById("ways_active").className = "nav-item"
+  document.getElementById("contact_div").style.display = "none"
+  document.getElementById("security_setting").style.display = "none"
+
+
+}
+function show_security(){
+  document.getElementById("main_info").style.display = "none"
+  document.getElementById("dash_item").className = "nav-item"
+  document.getElementById("settings_item").className = "nav-item active"
+  document.getElementById("ways_active").className = "nav-item"
+  document.getElementById("security_setting").style.display = "block"
+  document.getElementById("settings_form").style.display = "none"
+  document.getElementById("contact_div").style.display = "none"
+}
+
+
+function update_user(){
+ 
+  $.post("/update_user_info/" + curr_username + "/" +
+    document.getElementById("first_name").value + "/" +
+    document.getElementById("last_name").value + "/" + 
+    document.getElementById("phone").value + "/" + 
+    document.getElementById("sign_birthdat").value + "/" + 
+    document.getElementById("setts_uname").value );
+    window.location.href = "/noto";
+
+}
+
+    function removeURLParameter(url, parameter) {
+    //prefer to use l.search if you have a location/link object
+    var urlparts = url.split('?');   
+    if (urlparts.length >= 2) {
+
+        var prefix = encodeURIComponent(parameter) + '=';
+        var pars = urlparts[1].split(/[&;]/g);
+
+        //reverse iteration as may be destructive
+        for (var i = pars.length; i-- > 0;) {    
+            //idiom for string.startsWith
+            if (pars[i].lastIndexOf(prefix, 0) !== -1) {  
+                pars.splice(i, 1);
+            }
+        }
+
+        return urlparts[0] + (pars.length > 0 ? '?' + pars.join('&') : '');
+    }
+    return url;
+}
+
+function hayafication()
+  {
+      cur_lang = "am"
+       if (removeURLParameter(window.location.href, 'lang').split("?").length < 2) { 
+        window.history.pushState('page2', 'Title', removeURLParameter(window.location.href, 'lang') + '?lang=am') 
+      }
+      else{
+        window.history.pushState('page2', 'Title', removeURLParameter(window.location.href, 'lang') + '&lang=am');
+      } 
+      (curr_username) ? $.post("/user_change_lang/" + curr_username + "/am") : console.log()
+
+      for(var sam = 0; sam < getCount(document.getElementById("notefic"), false) - 2; sam++){
+
+        document.getElementById(String(sam) + "luck1").innerHTML = notefic_sorter(document.getElementById(String(sam) + "luck1").value, "am")
+
+      }
+      document.getElementById("hy_text").className = "font-weight-bold";
+      document.getElementById("en_text").className = "";
+      document.getElementById("rs_text").className = ""; 
+      document.getElementById("glx").innerHTML = "Գլխավոր Էջ";
+      document.getElementById("karg").innerHTML = "Կարգավորումներ";
+      document.getElementById("der").innerHTML = "Derolo կարգավորումներ";
+      document.getElementById("sec").innerHTML = "Անվտ․ կարգ․";
+      document.getElementById("way").innerHTML = "Ճանապարհներ";
+      document.getElementById("boo").innerHTML = "Երթեր";
+      document.getElementById("cr").innerHTML = "Ստեղծել";
+      document.getElementById("fi").innerHTML = "Գտնել";
+      document.getElementById("my").innerHTML = "Իմ";
+      document.getElementById("boked").innerHTML = "Պատվիրվածներ";
+      document.getElementById("mc").innerHTML = "Լեզու";
+      document.getElementById("mine").innerHTML = "Անձնական էջ";
+      document.getElementById("set").innerHTML = "Կարգավորումներ";
+      document.getElementById("acti").innerHTML = "Գործունեության տեղեկամատյան";
+      document.getElementById("out").innerHTML = "Դուրս գալ";
+      document.getElementById("da").innerHTML = "Գլխավոր Էջ";
+      document.getElementById("crm").innerHTML = "Ստեղծել";
+      document.getElementById("inc").innerHTML = "Շահույթ (ամսական)";
+      document.getElementById("incy").innerHTML = "Շահույթ (տարեկան)";
+      document.getElementById("ar").innerHTML = "Առաջադրանքներ";
+      document.getElementById("sps").innerHTML = "Սպասող պահանջները";
+      document.getElementById("ner").innerHTML = "Ներկաիս գաղտնաբառ";
+      document.getElementById("np").innerHTML = "Նոր գաղտնաբառ";
+      document.getElementById("rp").innerHTML = "Կրկնել";
+      document.getElementById("sv").innerHTML = "Պահպանել";
+      document.getElementById("st").innerHTML = "ստեղծագործական";
+      document.getElementById("fr").innerHTML = "Ից";
+      document.getElementById("too").innerHTML = "Դեպի";
+      document.getElementById("ba").innerHTML = "Հետադարձ";
+      document.getElementById("gt").innerHTML = "Մեկնելու ժամանակ";
+      document.getElementById("bt").innerHTML = "Հետ վերադառնալու ժամ";
+      document.getElementById("po").innerHTML = "Գումար";
+      document.getElementById("ci").innerHTML = "Ավտոմեքենաից տեղեկեւթյուն";
+      document.getElementById("fs").innerHTML = "Ազատ նստատեղեր";
+      //document.getElementById("up").innerHTML = "Օգտագործողի հեռախոս";
+      document.getElementById("animal_info").innerHTML = "Ոչ մի կենդանի";
+      document.getElementById("smoking_info").innerHTML = "Չի կարելի ծխել";
+      document.getElementById("musicing_info").innerHTML = "Ոչ մի երաժշտություն";
+      document.getElementById("post").innerHTML = "Ստեղծել";
+      document.getElementById("dis").innerHTML = "Հրաժարվել";
+      //document.getElementById("ne").innerHTML = "Անուն";
+      document.getElementById("az").innerHTML = "Ազգանուն";
+      document.getElementById("ph").innerHTML = "Հեռախոսահամար";
+      document.getElementById("bd").innerHTML = "Ծննդյան օր";
+      document.getElementById("un").innerHTML = "Օգտագործողի Անուն";
+      document.getElementById("ve").innerHTML = "Վերականգնել";
+      //document.getElementById("ml").innerHTML = "Էլ-հասցե";
+      //document.getElementById("lo").innerHTML = "Գտնվելու վայրը";
+      //document.getElementById("pas").innerHTML = "Գաղտնաբառ";
+      //document.getElementById("svv").innerHTML = "Հաստատել";
+      //document.getElementById("ver").innerHTML = "Վերանայել";
+    }
+
+
+function rusafication()
+  {
+      cur_lang = "ru"
+      if (removeURLParameter(window.location.href, 'lang').split("?").length < 2) { 
+        window.history.pushState('page2', 'Title', removeURLParameter(window.location.href, 'lang') + '?lang=ru') 
+      }
+      else{
+        window.history.pushState('page2', 'Title', removeURLParameter(window.location.href, 'lang') + '&lang=ru');
+      } 
+      (curr_username) ? $.post("/user_change_lang/" + curr_username + "/ru") : console.log()
+      for(var sam = 0; sam < getCount(document.getElementById("notefic"), false) - 2; sam++){
+
+        document.getElementById(String(sam) + "luck1").innerHTML = notefic_sorter(document.getElementById(String(sam) + "luck1").value, "ru")
+
+      }
+      document.getElementById("hy_text").className = "";
+      document.getElementById("en_text").className = "";
+      document.getElementById("rs_text").className = "font-weight-bold"; 
+      document.getElementById("glx").innerHTML = "Главная страница";
+      document.getElementById("karg").innerHTML = "Настройки";
+      document.getElementById("der").innerHTML = "Derolo Настройки";
+      document.getElementById("sec").innerHTML = "Настройки безопасности";
+      document.getElementById("way").innerHTML = "Дороги";
+      document.getElementById("boo").innerHTML = "Таможенные услуги";
+      document.getElementById("cr").innerHTML = "Создайте";
+      document.getElementById("fi").innerHTML = "Найти";
+      document.getElementById("my").innerHTML = "мой";
+      document.getElementById("boked").innerHTML = "забронированы";
+      document.getElementById("mc").innerHTML = "Язик";
+      document.getElementById("mine").innerHTML = "Персональная страница";
+      document.getElementById("set").innerHTML = "Настройки";
+      document.getElementById("acti").innerHTML = "Журнал активности";
+      document.getElementById("out").innerHTML = "Выйти";
+      document.getElementById("da").innerHTML = "Главная страница";
+      document.getElementById("crm").innerHTML = "Создать";
+      document.getElementById("inc").innerHTML = "Прибыль (ежемесячно)";
+      document.getElementById("incy").innerHTML = "Прибыль (годовая)";
+      document.getElementById("ar").innerHTML = "Задания";
+      document.getElementById("sps").innerHTML = "Ожидаемые требования";
+      document.getElementById("ner").innerHTML = "Текущий пароль";
+      document.getElementById("np").innerHTML = "Новый пароль";
+      document.getElementById("rp").innerHTML = "Повторение";
+      document.getElementById("sv").innerHTML = "Сохранить";
+      document.getElementById("st").innerHTML = "творческий";
+      document.getElementById("fr").innerHTML = "от";
+      document.getElementById("too").innerHTML = "в";
+      document.getElementById("ba").innerHTML = "Возвращение";
+      document.getElementById("gt").innerHTML = "Время уходить";
+      document.getElementById("bt").innerHTML = "Время возвращаться";
+      document.getElementById("po").innerHTML = "Деньги";
+      document.getElementById("ci").innerHTML = "Информация из машины";
+      document.getElementById("fs").innerHTML = "Свободные места";
+      //document.getElementById("up").innerHTML = "Телефон пользователя";
+      document.getElementById("animal_info").innerHTML = "Животных нет";
+      document.getElementById("smoking_info").innerHTML = "Ты не можешь курить";
+      document.getElementById("musicing_info").innerHTML = "Нет музыки";
+      document.getElementById("post").innerHTML = "Создать";
+      document.getElementById("dis").innerHTML = "Отказываться";
+      //document.getElementById("ne").innerHTML = "Имя";
+      document.getElementById("az").innerHTML = "Фамилия";
+      document.getElementById("ph").innerHTML = "Номер телефона";
+      document.getElementById("bd").innerHTML = "день рождения";
+      document.getElementById("un").innerHTML = "Имя пользователя";
+      document.getElementById("ve").innerHTML = "Восстановить";
+      //document.getElementById("ml").innerHTML = "Электронное адрес";
+      //document.getElementById("lo").innerHTML = "Расположение";
+      //document.getElementById("pas").innerHTML = "Пароль";
+      //document.getElementById("svv").innerHTML = "Подтверждение";
+      //document.getElementById("ver").innerHTML = "Рассмотрение";
+    }
+
+
+function anglafication()
+  {
+      (removeURLParameter(window.location.href, 'lang').split("?").length < 2) ? window.history.pushState('page2', 'Title', removeURLParameter(window.location.href, 'lang') + '?lang=en') : window.history.pushState('page2', 'Title', removeURLParameter(window.location.href, 'lang') + '&lang=en');
+      (curr_username) ? $.post("/user_change_lang/" + curr_username + "/en") : console.log()
+      cur_lang = "en"
+      for(var sam = 0; sam < getCount(document.getElementById("notefic"), false) - 2; sam++){
+
+        document.getElementById(String(sam) + "luck1").innerHTML = notefic_sorter(document.getElementById(String(sam) + "luck1").value, "en")
+
+      }
+      document.getElementById("hy_text").className = "";
+      document.getElementById("en_text").className = "font-weight-bold";
+      document.getElementById("rs_text").className = ""; 
+      document.getElementById("glx").innerHTML = "Dashboard";
+      document.getElementById("karg").innerHTML = "Settings";
+      document.getElementById("der").innerHTML = "Derolo Settings";
+      document.getElementById("sec").innerHTML = "Security settings";
+      document.getElementById("way").innerHTML = "ways";
+      document.getElementById("boo").innerHTML = "Custom services";
+      document.getElementById("cr").innerHTML = "Create";
+      document.getElementById("fi").innerHTML = "Find";
+      document.getElementById("my").innerHTML = "My";
+      document.getElementById("boked").innerHTML = "Booked";
+      document.getElementById("mc").innerHTML = "Language";
+      document.getElementById("mine").innerHTML = "Personal page";
+      document.getElementById("set").innerHTML = "Settings";
+      document.getElementById("acti").innerHTML = "Activity log";
+      document.getElementById("out").innerHTML = "Log out";
+      document.getElementById("da").innerHTML = "Main page";
+      document.getElementById("crm").innerHTML = "Create";
+      document.getElementById("inc").innerHTML = "Profit (monthly)";
+      document.getElementById("incy").innerHTML = "Profit (annual)";
+      document.getElementById("ar").innerHTML = "Tasks";
+      document.getElementById("sps").innerHTML = "Expected requirements";
+      document.getElementById("ner").innerHTML = "Current password";
+      document.getElementById("np").innerHTML = "New password";
+      document.getElementById("rp").innerHTML = "Repeat";
+      document.getElementById("sv").innerHTML = "Save";
+      document.getElementById("st").innerHTML = "creative";
+      document.getElementById("fr").innerHTML = "from";
+      document.getElementById("too").innerHTML = "to";
+      document.getElementById("ba").innerHTML = "Return";
+      document.getElementById("gt").innerHTML = "Time to leave";
+      document.getElementById("bt").innerHTML = "Time to return";
+      document.getElementById("po").innerHTML = "Money";
+      document.getElementById("ci").innerHTML = "Information from the car";
+      document.getElementById("fs").innerHTML = "Free seats";
+      //document.getElementById("up").innerHTML = "User's phone";
+      document.getElementById("animal_info").innerHTML = "No animals";
+      document.getElementById("smoking_info").innerHTML = "You can't smoke";
+      document.getElementById("musicing_info").innerHTML = "No music";
+      document.getElementById("post").innerHTML = "Create";
+      document.getElementById("dis").innerHTML = "Refuse";
+      //document.getElementById("ne").innerHTML = "Name";
+      document.getElementById("az").innerHTML = "Last name";
+      document.getElementById("ph").innerHTML = "Phone number";
+      document.getElementById("bd").innerHTML = "Birthday";
+      document.getElementById("un").innerHTML = "User Name";
+      document.getElementById("ve").innerHTML = "Restore";
+      //document.getElementById("ml").innerHTML = "Email";
+      //document.getElementById("lo").innerHTML = "Location";
+      //document.getElementById("pas").innerHTML = "Password";
+      //document.getElementById("svv").innerHTML = "Confirm";
+      //document.getElementById("ver").innerHTML = "Review";
+    }
+
+    </script>
+
+<script>
+
+
+
+/*An array containing all the country names in the world:*/
+var countries = [];
+/*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+//autocomplete(document.getElementById("mek"), maps_sigges);
+
+suig();
+suig1();
+</script>
+
+<style type="text/css">
+  .autocomplete {
+  position: relative;
+  /*display: inline-block;*/
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff; 
+  border-bottom: 1px solid #d4d4d4; 
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #e9e9e9; 
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: DodgerBlue !important; 
+  color: #ffffff; 
+}
+
+.user_phones_input{
+  width: 86%;
+}
+
+.input-group-addon{
+  position: relative;
+  right: -8px;
+  top: 5px;
+}
+
+.input-group-img{
+  width: 25px
+}
+
+.hide_th{
+  display: none;
+}
+
+</style>
+
+
+</body>
+
+</html>

@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!--  This file has been downloaded from https://bootdey.com  -->
+    <!--  All snippets are MIT license https://bootdey.com/license -->
+    <title>KTanem</title>
+      <link rel="shortcut icon" href="/static/img/loygo1.png">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="https://api-maps.yandex.ru/2.1/?apikey=919edd6b-dd1e-443e-9abf-e727e549da9d&lang=ru_RU" type="text/javascript"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+ 
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=919edd6b-dd1e-443e-9abf-e727e549da9d&lang=ru_RU" type="text/javascript"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
+ <script src="static/us_int/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <style type="text/css">
+    	body{
+    margin-top:20px;
+}
+/* User Cards */
+.user-box {
+    width: 110px;
+    margin: auto;
+    margin-bottom: 20px;
+    
+}
+
+.user-box img {
+    width: 100%;
+    border-radius: 50%;
+	padding: 3px;
+	background: #fff;
+	-webkit-box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
+    -ms-box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
+}
+
+.profile-card-2 .card {
+	position:relative;
+}
+
+.profile-card-2 .card .card-body {
+	z-index:1;
+}
+
+.profile-card-2 .card::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+	border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    height: 112px;
+    background-color: #e6e6e6;
+}
+
+.profile-card-2 .card.profile-primary::before {
+	background-color: #008cff;
+}
+.profile-card-2 .card.profile-success::before {
+	background-color: #15ca20;
+}
+.profile-card-2 .card.profile-danger::before {
+	background-color: #fd3550;
+}
+.profile-card-2 .card.profile-warning::before {
+	background-color: #ff9700;
+}
+.profile-card-2 .user-box {
+	margin-top: 30px;
+}
+
+.profile-card-3 .user-fullimage {
+	position:relative;
+}
+
+.profile-card-3 .user-fullimage .details{
+	position: absolute;
+    bottom: 0;
+    left: 0px;
+	width:100%;
+}
+
+.profile-card-4 .user-box {
+    width: 110px;
+    margin: auto;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+
+.profile-card-4 .list-icon {
+    display: table-cell;
+    font-size: 30px;
+    padding-right: 20px;
+    vertical-align: middle;
+    color: #223035;
+}
+
+.profile-card-4 .list-details {
+	display: table-cell;
+	vertical-align: middle;
+	font-weight: 600;
+    color: #223035;
+    font-size: 15px;
+    line-height: 15px;
+}
+
+.profile-card-4 .list-details small{
+	display: table-cell;
+	vertical-align: middle;
+	font-size: 12px;
+	font-weight: 400;
+    color: #808080;
+}
+
+/*Nav Tabs & Pills */
+.nav-tabs .nav-link {
+    color: #223035;
+	font-size: 12px;
+    text-align: center;
+	letter-spacing: 1px;
+    font-weight: 600;
+	margin: 2px;
+    margin-bottom: 0;
+	padding: 12px 20px;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+	
+}
+.nav-tabs .nav-link:hover{
+    border: 1px solid transparent;
+}
+.nav-tabs .nav-link i {
+    margin-right: 2px;
+	font-weight: 600;
+}
+
+.top-icon.nav-tabs .nav-link i{
+	margin: 0px;
+	font-weight: 500;
+	display: block;
+    font-size: 20px;
+    padding: 5px 0;
+}
+
+.nav-tabs-primary.nav-tabs{
+	border-bottom: 1px solid #008cff;
+}
+
+.nav-tabs-primary .nav-link.active, .nav-tabs-primary .nav-item.show>.nav-link {
+    color: #008cff;
+    background-color: #fff;
+    border-color: #008cff #008cff #fff;
+    border-top: 3px solid #008cff;
+}
+
+.nav-tabs-success.nav-tabs{
+	border-bottom: 1px solid #15ca20;
+}
+
+.nav-tabs-success .nav-link.active, .nav-tabs-success .nav-item.show>.nav-link {
+    color: #15ca20;
+    background-color: #fff;
+    border-color: #15ca20 #15ca20 #fff;
+    border-top: 3px solid #15ca20;
+}
+
+.nav-tabs-info.nav-tabs{
+	border-bottom: 1px solid #0dceec;
+}
+
+.nav-tabs-info .nav-link.active, .nav-tabs-info .nav-item.show>.nav-link {
+    color: #0dceec;
+    background-color: #fff;
+    border-color: #0dceec #0dceec #fff;
+    border-top: 3px solid #0dceec;
+}
+
+.nav-tabs-danger.nav-tabs{
+	border-bottom: 1px solid #fd3550;
+}
+
+.nav-tabs-danger .nav-link.active, .nav-tabs-danger .nav-item.show>.nav-link {
+    color: #fd3550;
+    background-color: #fff;
+    border-color: #fd3550 #fd3550 #fff;
+    border-top: 3px solid #fd3550;
+}
+
+.nav-tabs-warning.nav-tabs{
+	border-bottom: 1px solid #ff9700;
+}
+
+.nav-tabs-warning .nav-link.active, .nav-tabs-warning .nav-item.show>.nav-link {
+    color: #ff9700;
+    background-color: #fff;
+    border-color: #ff9700 #ff9700 #fff;
+    border-top: 3px solid #ff9700;
+}
+
+.nav-tabs-dark.nav-tabs{
+	border-bottom: 1px solid #223035;
+}
+
+.nav-tabs-dark .nav-link.active, .nav-tabs-dark .nav-item.show>.nav-link {
+    color: #223035;
+    background-color: #fff;
+    border-color: #223035 #223035 #fff;
+    border-top: 3px solid #223035;
+}
+
+.nav-tabs-secondary.nav-tabs{
+	border-bottom: 1px solid #75808a;
+}
+.nav-tabs-secondary .nav-link.active, .nav-tabs-secondary .nav-item.show>.nav-link {
+    color: #75808a;
+    background-color: #fff;
+    border-color: #75808a #75808a #fff;
+    border-top: 3px solid #75808a;
+}
+
+.tabs-vertical .nav-tabs .nav-link {
+    color: #223035;
+    font-size: 12px;
+    text-align: center;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin: 2px;
+    margin-right: -1px;
+    padding: 12px 1px;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+    border-radius: 0;
+    border-top-left-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+}
+
+.tabs-vertical .nav-tabs{
+	border:0;
+	border-right: 1px solid #dee2e6;
+}
+
+.tabs-vertical .nav-tabs .nav-item.show .nav-link, .tabs-vertical .nav-tabs .nav-link.active {
+    color: #495057;
+    background-color: #fff;
+    border-color: #dee2e6 #dee2e6 #fff;
+    border-bottom: 1px solid #dee2e6;
+    border-right: 0;
+    border-left: 1px solid #dee2e6;
+}
+
+.tabs-vertical-primary.tabs-vertical .nav-tabs{
+	border:0;
+	border-right: 1px solid #008cff;
+}
+
+.tabs-vertical-primary.tabs-vertical .nav-tabs .nav-item.show .nav-link, .tabs-vertical-primary.tabs-vertical .nav-tabs .nav-link.active {
+    color: #008cff;
+    background-color: #fff;
+    border-color: #008cff #008cff #fff;
+    border-bottom: 1px solid #008cff;
+    border-right: 0;
+    border-left: 3px solid #008cff;
+}
+
+.tabs-vertical-success.tabs-vertical .nav-tabs{
+	border:0;
+	border-right: 1px solid #15ca20;
+}
+
+.tabs-vertical-success.tabs-vertical .nav-tabs .nav-item.show .nav-link, .tabs-vertical-success.tabs-vertical .nav-tabs .nav-link.active {
+    color: #15ca20;
+    background-color: #fff;
+    border-color: #15ca20 #15ca20 #fff;
+    border-bottom: 1px solid #15ca20;
+    border-right: 0;
+    border-left: 3px solid #15ca20;
+}
+
+.tabs-vertical-info.tabs-vertical .nav-tabs{
+	border:0;
+	border-right: 1px solid #0dceec;
+}
+
+.tabs-vertical-info.tabs-vertical .nav-tabs .nav-item.show .nav-link, .tabs-vertical-info.tabs-vertical .nav-tabs .nav-link.active {
+    color: #0dceec;
+    background-color: #fff;
+    border-color: #0dceec #0dceec #fff;
+    border-bottom: 1px solid #0dceec;
+    border-right: 0;
+    border-left: 3px solid #0dceec;
+}
+
+.tabs-vertical-danger.tabs-vertical .nav-tabs{
+	border:0;
+	border-right: 1px solid #fd3550;
+}
+
+.tabs-vertical-danger.tabs-vertical .nav-tabs .nav-item.show .nav-link, .tabs-vertical-danger.tabs-vertical .nav-tabs .nav-link.active {
+    color: #fd3550;
+    background-color: #fff;
+    border-color: #fd3550 #fd3550 #fff;
+    border-bottom: 1px solid #fd3550;
+    border-right: 0;
+    border-left: 3px solid #fd3550;
+}
+
+.tabs-vertical-warning.tabs-vertical .nav-tabs{
+	border:0;
+	border-right: 1px solid #ff9700;
+}
+
+.tabs-vertical-warning.tabs-vertical .nav-tabs .nav-item.show .nav-link, .tabs-vertical-warning.tabs-vertical .nav-tabs .nav-link.active {
+    color: #ff9700;
+    background-color: #fff;
+    border-color: #ff9700 #ff9700 #fff;
+    border-bottom: 1px solid #ff9700;
+    border-right: 0;
+    border-left: 3px solid #ff9700;
+}
+
+.tabs-vertical-dark.tabs-vertical .nav-tabs{
+	border:0;
+	border-right: 1px solid #223035;
+}
+
+.tabs-vertical-dark.tabs-vertical .nav-tabs .nav-item.show .nav-link, .tabs-vertical-dark.tabs-vertical .nav-tabs .nav-link.active {
+    color: #223035;
+    background-color: #fff;
+    border-color: #223035 #223035 #fff;
+    border-bottom: 1px solid #223035;
+    border-right: 0;
+    border-left: 3px solid #223035;
+}
+
+.tabs-vertical-secondary.tabs-vertical .nav-tabs{
+	border:0;
+	border-right: 1px solid #75808a;
+}
+
+.tabs-vertical-secondary.tabs-vertical .nav-tabs .nav-item.show .nav-link, .tabs-vertical-secondary.tabs-vertical .nav-tabs .nav-link.active {
+    color: #75808a;
+    background-color: #fff;
+    border-color: #75808a #75808a #fff;
+    border-bottom: 1px solid #75808a;
+    border-right: 0;
+    border-left: 3px solid #75808a;
+}
+
+.nav-pills .nav-link {
+    border-radius: .25rem;
+    color: #223035;
+    font-size: 12px;
+    text-align: center;
+	letter-spacing: 1px;
+    font-weight: 600;
+    text-transform: uppercase;
+	margin: 3px;
+    padding: 12px 20px;
+	-webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease; 
+
+}
+
+.nav-pills .nav-link:hover {
+    background-color:#f4f5fa;
+}
+
+.nav-pills .nav-link i{
+	margin-right:2px;
+	font-weight: 600;
+}
+
+.top-icon.nav-pills .nav-link i{
+	margin: 0px;
+	font-weight: 500;
+	display: block;
+    font-size: 20px;
+    padding: 5px 0;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #496a90;
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(0, 0, 0, 0.5);
+}
+
+.nav-pills-success .nav-link.active, .nav-pills-success .show>.nav-link {
+    color: #fff;
+    background-color: #15ca20;
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(21, 202, 32, .5);
+}
+
+.nav-pills-info .nav-link.active, .nav-pills-info .show>.nav-link {
+    color: #fff;
+    background-color: #0dceec;
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(13, 206, 236, 0.5);
+}
+
+.nav-pills-danger .nav-link.active, .nav-pills-danger .show>.nav-link{
+    color: #fff;
+    background-color: #fd3550;
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(253, 53, 80, .5);
+}
+
+.nav-pills-warning .nav-link.active, .nav-pills-warning .show>.nav-link {
+    color: #fff;
+    background-color: #ff9700;
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(255, 151, 0, .5);
+}
+
+.nav-pills-dark .nav-link.active, .nav-pills-dark .show>.nav-link {
+    color: #fff;
+    background-color: #223035;
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(34, 48, 53, .5);
+}
+
+.nav-pills-secondary .nav-link.active, .nav-pills-secondary .show>.nav-link {
+    color: #fff;
+    background-color: #75808a;
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(117, 128, 138, .5);
+}
+.card .tab-content{
+	padding: 1rem 0 0 0;
+}
+
+.z-depth-3 {
+    -webkit-box-shadow: 0 11px 7px 0 rgba(0,0,0,0.19),0 13px 25px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 11px 7px 0 rgba(0,0,0,0.19),0 13px 25px 0 rgba(0,0,0,0.3);
+}
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav" style="box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="/"><img src="/static/img/log1.png" style="width: 95%"></a>
+      <button onclick="set_res_im()"  class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+
+        <ul class="navbar-nav ml-auto my-2 my-lg-0">
+          <li class="nav-item">
+            <a  class="nav-link js-scroll-trigger" href="sc">Գտնել</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" onclick="check_log()">Ավելացնել</a>
+          </li>
+          
+          <li class="nav-item">
+            <a id="log_in_is_not" class="nav-link js-scroll-trigger" onclick="show_log();">Մուտք</a>
+          </li>
+          
+          <li class="nav-item">
+            <a id="log_in_is_not1" class="nav-link js-scroll-trigger" onclick="show_regist();">Գրանցում</a>
+          </li>
+
+        </ul>
+        <div id="user_dropdown" class="dropdown">
+        <img   id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius: 2.25rem!important; display: none;" src="" class="rounded float-left" alt="..." width="50" height="50">
+
+            <div  class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="noto" id="user_the_name"></a>
+    <a class="dropdown-item" href="my_pos">Իմ</a>
+    <a class="dropdown-item" href="my_booked">Պատվիրված</a>
+    <a class="dropdown-item" onclick="$.post('/valod');setTimeout(logout,1000);">Դուրս գալ</a>
+  </div>
+</div>
+        <div id="lang" class="dropdown">
+        <img  class="dropdown-toggle" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="    border-radius: 2.25rem!important;width: 25px;height: 25px;right: 31px;margin-left: 22px;" src="https://cdn.countryflags.com/thumbs/armenia/flag-button-round-250.png" class="rounded float-left" alt="..." width="50" height="50">
+
+            <div  class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <a class="dropdown-item" onclick="document.getElementById('dropdownMenuButton1').src = 'https://cdn.countryflags.com/thumbs/armenia/flag-button-round-250.png'; window.history.pushState('page2', 'Title', removeURLParameter(window.location.href, 'lang') + '&lang=am'); cur_lang='am'"><img style="width: 25px;
+    height: 25px;" class="rounded-circle" src="https://cdn.countryflags.com/thumbs/armenia/flag-button-round-250.png" alt="">hy</a>
+    <a class="dropdown-item" onclick="document.getElementById('dropdownMenuButton1').src = 'https://cdn.countryflags.com/thumbs/united-kingdom/flag-3d-round-250.png'; window.history.pushState('page2', 'Title', removeURLParameter(window.location.href, 'lang') + '&lang=en'); cur_lang='en'"><img style="width: 25px;
+    height: 25px;" class="rounded-circle" src="https://cdn.countryflags.com/thumbs/united-kingdom/flag-3d-round-250.png" alt="">en</a>
+    <a class="dropdown-item" onclick="document.getElementById('dropdownMenuButton1').src = 'https://cdn.countryflags.com/thumbs/russia/flag-button-round-250.png'; window.history.pushState('page2', 'Title', removeURLParameter(window.location.href, 'lang') + '&lang=ru'); cur_lang='ru'"><img style="width: 25px;
+    height: 25px;" class="rounded-circle" src="https://cdn.countryflags.com/thumbs/russia/flag-button-round-250.png">ru</a>
+  </div>
+</div>
+      </div>
+    </div>
+  </nav>
+
+    <form action="#" id="sock"><button id="sock_click" style="display: none;"></button></form>
+
+<div class="container" style="margin-top: 90px;">
+<div class="row">
+        <div class="col-lg-4">
+           <div class="profile-card-4 z-depth-3">
+            <div class="card">
+              <div style="background-color: #496A90 !important;" class="card-body text-center bg-primary rounded-top">
+               <div class="user-box">
+                <img id="user_img" alt="user avatar">
+              </div>
+              <h5 class="mb-1 text-white" id="creator_uname"></h5>
+             </div>
+              <div class="card-body">
+                <ul class="list-group shadow-none">
+                <li class="list-group-item">
+                  <div class="list-icon">
+                    <i class="fa fa-phone-square"></i>
+                  </div>
+                  <div class="list-details">
+                    <span id="from_time"></span>
+                    <span style="display: none" id="mobile_num"></span>
+                    <small>Go Time</small>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="list-icon">
+                    <i class="fa fa-envelope"></i>
+                  </div>
+                  <div class="list-details">
+                    <span id="car"></span>
+                    <small>Car</small>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                <button style="width: 100%;border-radius: 100px;" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Call</button>
+
+                </li>
+
+                </ul>
+                <div class="row text-center mt-4">
+                  <div class="col p-2">
+                   <h4 class="mb-1 line-height-5" id="money"></h4>
+                    <small class="mb-0 font-weight-bold">Money</small>
+                   </div>
+                    <div class="col p-2">
+                      <h4 class="mb-1 line-height-5" id="free_space"></h4>
+                     <small class="mb-0 font-weight-bold">Free space</small>
+                    </div>
+                    <div class="col p-2">
+                     <h4 class="mb-1 line-height-5" id="av_space"></h4>
+                     <small class="mb-0 font-weight-bold">Book space</small>
+                    </div>
+                 </div>
+               </div>
+               <div class="card-footer text-center">
+                 <a href="javascript:void()" class="btn-social btn-facebook waves-effect waves-light m-1"><i class="fa fa-facebook"></i></a>
+                 <a href="javascript:void()" class="btn-social btn-google-plus waves-effect waves-light m-1"><i class="fa fa-google-plus"></i></a>
+                 <a href="javascript:void()" class="list-inline-item btn-social btn-behance waves-effect waves-light"><i class="fa fa-behance"></i></a>
+                 <a href="javascript:void()" class="list-inline-item btn-social btn-dribbble waves-effect waves-light"><i class="fa fa-dribbble"></i></a>
+               </div>
+             </div>
+           </div>
+        </div>
+                <div id="show_map" class="col-lg-8">
+           <div class="card z-depth-3">
+            <div class="card-body">
+            <ul class="nav nav-pills nav-pills-primary nav-justified">
+                <li class="nav-item">
+                    <a href="javascript:void();" id="bar_info1" onclick="map_out()" data-target="#profile" data-toggle="pill" class="nav-link "><i class="icon-user"></i> <span class="hidden-xs">Info</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript:void();" id="bar_map1" onclick="do_map()" data-target="#messages" data-toggle="pill" class="nav-link active show"><i class="icon-envelope-open"></i> <span class="hidden-xs">Map</span></a>
+                </li>
+                <li id="fcin_editor" class="nav-item">
+                    <a href="javascript:void();" id="bar_edit1" onclick="map_out1()" data-target="#edit" data-toggle="pill" class="nav-link"><i class="icon-note"></i> <span class="hidden-xs">Edit</span></a>
+                </li>
+            </ul>
+<div class="tab-content" style="    height: 476px;"><div style="    position: absolute;height: 80%;width: 95%;" id="map"></div></div>
+        </div></div></div>
+        
+        <div id="not_map" class="col-lg-8">
+           <div class="card z-depth-3">
+            <div class="card-body">
+            <ul class="nav nav-pills nav-pills-primary nav-justified">
+                <li class="nav-item">
+                    <a href="javascript:void();" id="bar_info" data-target="#profile" data-toggle="pill" class="nav-link active show"><i class="icon-user"></i> <span class="hidden-xs">Info</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript:void();" id="bar_map" onclick="do_map()" data-target="#messages" data-toggle="pill" class="nav-link"><i class="icon-envelope-open"></i> <span class="hidden-xs">Map</span></a>
+                </li>
+                <li id="fcin_editor1" class="nav-item">
+                    <a href="javascript:void();" id="bar_edit" data-target="#edit" data-toggle="pill" class="nav-link"><i class="icon-note"></i> <span class="hidden-xs">Edit</span></a>
+                </li>
+            </ul>
+            <div class="tab-content p-3">
+                <div class="tab-pane active show" id="profile">
+                    <h5 class="mb-3">Way Info</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>From</h6>
+                            <p id="fromo">
+                               
+                            </p>
+                            <h6>To</h6>
+                            <p id="too">
+                                
+                            </p>
+                        </div>
+                        <div class="col-md-12">
+                            <h5 class="mt-2 mb-3"><span class="fa fa-clock-o ion-clock float-right"></span> More info</h5>
+                            <table class="table table-hover table-striped">
+                                <tbody>                                    
+                                    <tr>
+                                        <td>
+                                            <div id="more_info"></div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--/row-->
+                </div>
+                <br>
+
+                    <div id="none_booked">
+                         <button onclick="book_show();book_open();" style="background-color: #496a90;border-color: #496a90;" class="btn btn-primary" type="submit">Book</button>
+                         <br><br>
+                         <div id="book_div">
+                              <br>
+                              <div id="create_phones"></div>
+                              <input type="text" id="num_seat" class="form-control" placeholder="Book space" aria-label="Book space" aria-describedby="basic-addon2">
+                              <br>
+                              <button style="background-color: #496a90;border-color: #496a90;" onclick="hide_book()" class="btn btn-primary" type="submit">Discard</button>
+                              <button style="background-color: #496a90;border-color: #496a90;" id="book_seat"  class="btn btn-primary" type="submit">Submit</button>
+                         </div>
+                    </div>
+
+                    <div id="booked" style="display: none;">
+                        <div class="dropdown">
+                         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           Booked
+                                </button>
+                               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                           <a class="dropdown-item" onclick="unbook_order()">UnBook</a>
+                                </div>
+                          </div>
+                    </div>
+
+                    <div id="requested" style="display: none;">
+                        <div class="dropdown">
+                         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           Booked
+                                </button>
+                               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                           <a class="dropdown-item" onclick="unbook_order()">Cancel</a>
+                                </div>
+                          </div>
+                    </div>
+
+                <div id="messages">
+                </div>
+
+                <div class="tab-pane" id="edit">
+                    <form>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label" > ուրդուց ընգեր</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" value="" id="editfrom" >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">ուր ազիզ</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" value="" id="editto" >
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">եբ</label>                
+                                <div class='col-lg-9'>
+                                    <input type='text' class="form-control" id='datetimepicker4'  readonly>
+                                </div>             
+                                        
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">շքամա</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="number" id="editmoney">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">մաշնա ինֆօ</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="url" value="" id="editcarinfo" >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">ազատ տեղ</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" value=""  id="editspace" >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">համարդ սա ազիզ</label>
+                            <div class="col-lg-6" id="post_nums">
+
+                                <input style="display: none" class="form-control" type="text" value=""  id="editphone" >
+
+                            
+                            </div>
+
+
+                            
+                        </div>
+                       
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">պատմելԸ</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" value="" id="editinfo" >
+                            </div>
+                        </div>
+                        
+                        <script>
+                            function minion() {
+                                var n = [];
+                                try{(document.getElementById("0checkk").checked) ? n.push(document.getElementById("0checkk1").value) : console.log()}
+                                catch(e){}
+                                try{(document.getElementById("1checkk").checked) ? n.push(document.getElementById("0checkk2").value) : console.log()}
+                                catch(e){}
+                                try{(document.getElementById("2checkk").checked) ? n.push(document.getElementById("0checkk3").value) : console.log()}
+                                catch(e){}
+                                $.post("/update_post/" + String(window.location.href.split("id")[1].split("=")[1]) + "/" +
+                                    String(document.getElementById("editfrom").value) + "/" +
+                                    String(document.getElementById("editto").value) + "/" +
+                                    String(document.getElementById("datetimepicker4").value) + "/" +
+                                    String(document.getElementById("editmoney").value) + "/" +
+                                    String(document.getElementById("editcarinfo").value) + "/" +
+                                    String(document.getElementById("editspace").value) + "/" +
+                                    JSON.stringify(n) + "/" +
+                                    String(document.getElementById("editinfo").value));
+
+                            }
+                            
+
+
+                        </script>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label"></label>
+                            <div class="col-lg-9">
+                                <input type="reset" class="btn btn-secondary" value="նազադ">
+                                <input type="button" class="btn btn-primary" value="սախռանիտ" onclick="minion()" >
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+      </div>
+      </div>
+        
+    </div>
+</div>
+<h1 id="my_baby"></h1>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker4').datetimepicker({
+             format: 'd-m-Y H:i',
+             step: 15
+        });
+    });
+</script>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Call</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img style="width: 22%;right: -34%;position: relative;" id="user_img1" alt="user avatar">
+        <h5 class="mb-1" id="creator_uname1" style="right: -38%;position: relative;margin-top: 7px;margin-bottom: 12px !important;"></h5>
+        <div class="container">
+            <div class="row">
+                <div class="form-label-group" id="call_nums">
+                </div>
+            </div>
+        </div>   
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style type="text/css">
+    .call_num{
+        border-radius: 68px;
+        position: relative;
+        right: -50%;
+    }
+</style>
+
+<script type="text/javascript">
+
+    document.getElementById("show_map").style.display = "none";
+    document.getElementById("book_div").style.display = "none";
+    var my_way_id;
+    function book_show(){
+        document.getElementById("book_div").style.display = "block";
+    }
+    function hide_book(){
+        document.getElementById("book_div").style.display = "none";
+    }
+    function do_map(){
+        document.getElementById("not_map").style.display = "none";
+        document.getElementById("show_map").style.display = "block";
+        document.getElementById("bar_edit").className = "nav-link";
+        document.getElementById("bar_info").className = "nav-link";
+        document.getElementById("bar_edit1").className = "nav-link";
+        document.getElementById("bar_info1").className = "nav-link";
+        document.getElementById("bar_map").className = "nav-link active show";
+        document.getElementById("bar_map1").className = "nav-link active show";
+    }
+    function map_out(){
+        document.getElementById("not_map").style.display = "block";
+        document.getElementById("show_map").style.display = "none";
+        document.getElementById("bar_info").className = "nav-link active show";
+        document.getElementById("bar_edit").className = "nav-link";
+        document.getElementById("bar_map").className = "nav-link";
+        document.getElementById("edit").className = "tab-pane";
+        document.getElementById("profile").className = "tab-pane active show";
+    }
+    function map_out1(){
+        document.getElementById("not_map").style.display = "block";
+        document.getElementById("show_map").style.display = "none";
+        document.getElementById("bar_edit").className = "nav-link active show";
+        document.getElementById("profile").className = "tab-pane";
+        document.getElementById("edit").className = "tab-pane active show";
+        document.getElementById("bar_info").className = "nav-link";
+        document.getElementById("bar_map").className = "nav-link";
+    }
+
+    var urlParams = new URLSearchParams(window.location.search);
+    var myParam = urlParams.get('lang');
+    var lang = (myParam) ? myParam : "am"
+
+    function removeURLParameter(url, parameter) {
+    //prefer to use l.search if you have a location/link object
+    var urlparts = url.split('?');   
+    if (urlparts.length >= 2) {
+
+        var prefix = encodeURIComponent(parameter) + '=';
+        var pars = urlparts[1].split(/[&;]/g);
+
+        //reverse iteration as may be destructive
+        for (var i = pars.length; i-- > 0;) {    
+            //idiom for string.startsWith
+            if (pars[i].lastIndexOf(prefix, 0) !== -1) {  
+                pars.splice(i, 1);
+            }
+        }
+
+        return urlparts[0] + (pars.length > 0 ? '?' + pars.join('&') : '');
+    }
+    return url;
+}
+            var inform;
+    var my_user_info;
+    var out_val = ''
+    var booked;
+    var curr_us;
+
+
+
+    //document.getElementById("book").style.display = "none";
+                $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+
+        (function(){
+
+                            $.getJSON(
+                                $SCRIPT_ROOT + "/user_login_info",
+            function(user_login_info){
+              console.log(user_login_info);
+              my_user_info = String(user_login_info);
+
+              document.getElementById("my_baby").value = user_login_info;
+    delete_edit();
+            $.get("/get_full_users/" + my_user_info, function(e){
+                console.log(e)
+                nums = e[0][4]
+                for(i in nums){nums = nums.replace("'", '"')}
+                    console.log(nums)
+                for(j in JSON.parse(nums)){
+                        cr_div_mb = document.createElement("div")
+                        cr_div_prep = document.createElement("div")
+                        cr_div_text =  document.createElement("div")
+                        cr_div_chck = document.createElement("input")
+                        cr_in_tx = document.createElement("input")
+
+                        cr_div_mb.className = "input-group mb-3"
+                        cr_div_prep.className = "input-group-prepend"
+                        cr_div_text.className = "input-group-text"
+                        cr_div_chck.setAttribute("type", "checkbox")
+                        cr_in_tx.className = "form-control"
+                        cr_in_tx.value = JSON.parse(nums)[j]
+                        cr_in_tx.id = String(j) + "check1"
+                        cr_in_tx.readOnly = true
+                        cr_div_chck.id = String(j) + "check"
+                        cr_div_chck.checked = (j == 0) ? true : false
+                        cr_div_chck.className = "radio"
+                       // if(JSON.parse(nums).length < 2){
+                       //   cr_div_chck.onclick = function(){this.checked = true}
+                        //}
+                        cr_div_chck.onclick = function(){
+                            try{document.getElementById("0check").checked = false}
+                            catch(e){}
+                            try{document.getElementById("1check").checked = false}
+                            catch(e){}
+                            try{document.getElementById("2check").checked = false}
+                            catch(e){}
+                            this.checked = true;
+                        }
+
+                        cr_div_text.appendChild(cr_div_chck)
+                        cr_div_prep.appendChild(cr_div_text)
+                        cr_div_mb.appendChild(cr_div_prep)
+                        cr_div_mb.appendChild(cr_in_tx)
+
+                        document.getElementById("create_phones").appendChild(cr_div_mb)
+                }
+            });
+            }
+                  );
+
+
+            $.getJSON(
+                                $SCRIPT_ROOT + "/getsession",
+            function(getsession){
+                curr_us = getsession;
+            }
+                  );
+
+                            $.getJSON(
+            $SCRIPT_ROOT+"/get_full_posts", // Your AJAX route here
+            function(get_full_posts) {
+                    post_id = urlParams.get('id');
+                    //my_post = get_full_posts[post_id]
+                    for (i in get_full_posts){if(String(get_full_posts[i][0]) == String(post_id)){my_post = get_full_posts[i];break;}}
+                    try{if(my_post){}}
+                    catch(e){window.location.href = "/quest_404"}
+                    console.log(my_post)
+                    document.getElementById("editfrom").value=my_post[1]
+                    document.getElementById("editto").value=my_post[2]
+                    document.getElementById("datetimepicker4").value=my_post[3]
+                    document.getElementById("datetimepicker4").value=my_post[4]
+                    document.getElementById("editmoney").value=my_post[5]
+                    document.getElementById("editcarinfo").value=my_post[6]
+                    document.getElementById("editspace").value=my_post[7]
+                    document.getElementById("editphone").value=my_post[8]
+                    document.getElementById("editinfo").value=my_post[10]
+                    
+                    var caller_nums = my_post[8]
+
+
+                    for(n in caller_nums){caller_nums = caller_nums.replace("'", '"')}
+
+                    for(k in JSON.parse(caller_nums)){
+                        my_in = document.createElement("input")
+
+                        my_in.value = JSON.parse(caller_nums)[k]
+                        my_in.className = "form-control call_num"
+                        my_in.readOnly = true;
+                        my_in.onclick = function(){window.location.href = "tel:" + JSON.parse(caller_nums)[k]}
+
+                        document.getElementById("call_nums").appendChild(my_in)
+                        document.getElementById("call_nums").appendChild(document.createElement("br"))
+
+                        cr_div_mb = document.createElement("div")
+                        cr_div_prep = document.createElement("div")
+                        cr_div_text =  document.createElement("div")
+                        cr_div_chck = document.createElement("input")
+                        cr_in_tx = document.createElement("input")
+
+                        cr_div_mb.className = "input-group mb-3"
+                        cr_div_prep.className = "input-group-prepend"
+                        cr_div_text.className = "input-group-text"
+                        cr_div_chck.setAttribute("type", "checkbox")
+                        cr_in_tx.className = "form-control"
+                        cr_in_tx.value = JSON.parse(caller_nums)[k]
+                        cr_in_tx.id = String(k) + "checkk1"
+                        cr_in_tx.readOnly = true
+                        cr_div_chck.id = String(k) + "checkk"
+                        cr_div_chck.checked = true
+                        cr_div_chck.className = "radio"
+                       // if(JSON.parse(nums).length < 2){
+                       //   cr_div_chck.onclick = function(){this.checked = true}
+                        //}
+                        cr_div_chck.onclick = function(){
+                            var n1 = 0;
+                            var n2 = 0;
+                            var n3 = 0;
+                            try{(document.getElementById("0checkk").checked) ? n1 = 1 : n1 = 0}
+                            catch(e){n1 = 0}
+                            try{(document.getElementById("1checkk").checked) ? n2 = 1 : n2 = 0}
+                            catch(e){n2 = 0}
+                            try{(document.getElementById("2checkk").checked) ? n3 = 1 : n3 = 0}
+                            catch(e){n3 = 0}
+                            if(!n1 && !n2 && !n3){this.checked = true;}
+                        }
+
+                        cr_div_text.appendChild(cr_div_chck)
+                        cr_div_prep.appendChild(cr_div_text)
+                        cr_div_mb.appendChild(cr_div_prep)
+                        cr_div_mb.appendChild(cr_in_tx)
+
+                        document.getElementById("post_nums").appendChild(cr_div_mb)
+                        if(JSON.parse(caller_nums).length - 1 > k){document.getElementById("post_nums").appendChild(document.createElement("br"))}
+
+                    }
+
+                    booked = my_post[12];
+                    for (i in booked){booked = booked.replace("'", '"')}
+                    for (j in JSON.parse(booked)){
+                        console.log(JSON.parse(booked)[j])
+                        console.log(JSON.parse(booked)[j][0], my_user_info)
+                        
+                        if(JSON.parse(booked)[j][0] == my_user_info){
+                            
+                            if(JSON.parse(booked)[j][1] == 1){
+                                console.log("Booked");
+                                document.getElementById("none_booked").style.display = "none";
+                                document.getElementById("booked").style.display = "block";
+                            }
+                            else{
+                                document.getElementById("none_booked").style.display = "none";
+                                document.getElementById("requested").style.display = "block";
+                            }
+                        }
+
+                    }
+                    document.getElementById("creator_uname").innerHTML = my_post[11];
+                    document.getElementById("creator_uname").value = my_post[11]
+                    document.getElementById("creator_uname1").innerHTML = my_post[11];
+                    document.getElementById("creator_uname1").value = my_post[11]
+                    try{
+                        if(urlParams.get('edit') == 1 && document.getElementById("creator_uname").innerHTML == my_user_info){
+                            document.getElementById("bar_edit").className = "nav-link active show"
+                            document.getElementById("bar_info").className = "nav-link"
+                            document.getElementById("profile").className = "tab-pane"
+                            document.getElementById("edit").className = "tab-pane active"
+
+
+                        }
+                    }
+                    catch(e){}
+                    document.getElementById("creator_uname").onclick = function(){window.location.href = "/user_infon?" + this.value};
+                    document.getElementById("creator_uname1").onclick = function(){window.location.href = "/user_infon?" + this.value};
+                    document.getElementById("fromo").innerHTML = "From  " + my_post[1]
+                    my_way_id = my_post[0];
+                    document.getElementById("too").innerHTML = "To  " + my_post[2]
+                    document.getElementById("from_time").innerHTML = my_post[3]
+                    document.getElementById("money").innerHTML =my_post[5]
+                    document.getElementById("car").innerHTML = my_post[6]
+                    document.getElementById("free_space").innerHTML = my_post[7]
+                    document.getElementById("mobile_num").innerHTML = my_post[8]
+                    document.getElementById("av_space").innerHTML = my_post[9]
+                    document.getElementById("more_info").innerHTML = my_post[10]
+                    document.getElementById("user_img").src = "/static/user_image/" + my_post[11] + "/a.png"
+                    document.getElementById("user_img").value = my_post[11];
+                    document.getElementById("user_img").onclick = function(){window.location.href = "/user_infon?" + this.value}
+                    document.getElementById("user_img1").src = "/static/user_image/" + my_post[11] + "/a.png"
+                    document.getElementById("user_img1").value = my_post[11];
+                    document.getElementById("user_img1").onclick = function(){window.location.href = "/user_infon?" + this.value}
+                    
+                        if(document.getElementById("my_baby").value == document.getElementById("creator_uname").innerHTML){
+                    document.getElementById("fcin_editor").style.display = "block";
+                    document.getElementById("fcin_editor1").style.display = "block";
+                    document.getElementById("none_booked").style.display = "none";
+                    console.log(my_user_info)
+                }
+else{
+   document.getElementById("fcin_editor1").style.display = "none";
+   document.getElementById("fcin_editor").style.display = "none";
+   console.log("Led")
+}
+
+
+                }
+);
+
+delete_edit();
+              //  setTimeout(arguments.callee, 1000);
+        })();
+        function book_open(){
+          if(my_user_info != "not"){}
+          else{window.location.href = "/lg_dp?back=" + window.location.href.split("?")[1].split("=")[1];}
+          
+        }
+           
+
+            $(document).ready(function() {
+        $('#book_seat').click(function() {
+            var last_num;
+            try{(document.getElementById("0check").checked) ? last_num = document.getElementById("0check1").value : console.log()}
+            catch(e){}
+            try{(document.getElementById("1check").checked) ? last_num = document.getElementById("1check2").value : console.log()}
+            catch(e){}
+            try{(document.getElementById("2check").checked) ? last_num = document.getElementById("2check3").value : console.log()}
+            catch(e){}
+       $.post("/book_seat/" + last_num + "|||" + document.getElementById("num_seat").value + "|||" + String(my_way_id) + "|||" + document.getElementById("my_baby").value + "|||" + document.getElementById("creator_uname").innerHTML + "|||" + document.getElementById("fromo").innerHTML.split("  ")[1] + "|||" + document.getElementById("too").innerHTML.split("  ")[1]);
+      document.getElementById("sock_click").click()
+      hide_book()
+
+
+        });
+    });
+
+ var socket = io.connect('https://codetg.cf/')
+
+   socket.on( 'connect', function() {
+         socket.emit( 'my event', {
+                 data: 'User Connected'
+                   } )
+           var form = $( '#sock' ).on( 'submit', function( e ) {
+                   e.preventDefault()
+                       socket.emit( 'gagarin', {
+                                 user_name : "a1",
+                                   message : "a2"
+                                       } )
+                   // emptyut field
+                 } )
+   } )
+socket.on( 'sahak', function( msg ) {
+           console.log(msg)
+})
+
+function unbook_order(){
+    console.log("Unbook")
+    $.post("/unbook/" + String(post_id) + "|||" + my_user_info + "|||" + document.getElementById("creator_uname").innerHTML);
+}
+
+function delete_edit(){
+console.log(document.getElementById("my_baby").value, document.getElementById("creator_uname").innerHTML)
+if(document.getElementById("my_baby").value == document.getElementById("creator_uname").innerHTML){
+    document.getElementById("fcin_editor").style.display = "block";
+    document.getElementById("fcin_editor1").style.display = "block"; 
+    console.log(my_user_info)
+}
+else{
+   document.getElementById("fcin_editor1").style.display = "none"; 
+   document.getElementById("fcin_editor").style.display = "none"; 
+   console.log("Led")
+}
+}
+    </script>
+
+  <script type="text/javascript">
+
+
+
+      ymaps.ready(init);
+
+
+
+      var myMap, 
+            myPlacemark;
+      function init(){
+        /*
+        
+              
+        ymaps.route(['Москва', 'Санкт-Петербург']).then(
+          function (route){
+            myMap.geoObjects.add(route);
+          },
+          function (error){
+            alert(error.message);
+          }
+        );
+        myMap.geoObjects.add(myPlacemark);*/
+myMap = new ymaps.Map("map", {
+          center: [55.76, 37.64],
+          zoom: 2
+        });
+   /*/     myPlacemark = new ymaps.Placemark([55.76, 37.64], {
+          hintContent: 'Москва!',
+          balloonContent: 'Столица России'
+        });*/
+/*var multiRoute = new ymaps.multiRouter.MultiRoute({   
+    // Точки маршрута. Точки могут быть заданы как координатами, так и адресом. 
+    referencePoints: [
+        document.getElementById("mek").innerHTML,
+        'Yerevan', 
+       // [55.734876, 37.59308], // улица Льва Толстого.
+    ]
+}, {
+      // Автоматически устанавливать границы карты так,
+      // чтобы маршрут был виден целиком.
+      boundsAutoApply: true
+});*/
+var searchControl = new ymaps.control.SearchControl({
+     options: {
+         float: 'left',
+        provider: 'yandex#search'
+     }
+});
+// Добавление маршрута на карту.
+//myMap.geoObjects.add(multiRoute);
+        var multiRoute = new ymaps.multiRouter.MultiRoute({   
+    // Точки маршрута. Точки могут быть заданы как координатами, так и адресом. 
+    referencePoints: [
+        '',
+        '', 
+       // [55.734876, 37.59308], // улица Льва Толстого.
+    ]
+}, {
+      // Автоматически устанавливать границы карты так,
+      // чтобы маршрут был виден целиком.
+      boundsAutoApply: true
+});
+myMap.geoObjects.add(multiRoute);
+
+    var multiRoute = new ymaps.multiRouter.MultiRoute({   
+    // Точки маршрута. Точки могут быть заданы как координатами, так и адресом. 
+    referencePoints: [
+        document.getElementById("fromo").innerHTML.split("  ")[1],
+        document.getElementById("too").innerHTML.split("  ")[1], 
+       // [55.734876, 37.59308], // улица Льва Толстого.
+    ]
+}, {
+      // Автоматически устанавливать границы карты так,
+      // чтобы маршрут был виден целиком.
+      boundsAutoApply: true
+});
+var searchControl = new ymaps.control.SearchControl({
+     options: {
+         float: 'left',
+        provider: 'yandex#search'
+     }
+});
+// Добавление маршрута на карту.
+myMap.geoObjects.add(multiRoute);
+      }
+
+</script>
+<script type="text/javascript">
+           var x1 = document.getElementById("log_in_is_not");
+      var x = document.getElementById("log_in_is_not1");
+        try{  
+    if (JSON.stringify({{ user }}) == "0"){      
+      var user_img = document.getElementById("dropdownMenuButton");
+      user_img.style.display = "none";
+          x1.style.display = "block";
+      x.style.display = "block";}
+      else{alert(1)}
+  }
+    catch(e) {
+            var user_img = document.getElementById("dropdownMenuButton");
+      user_img.style.display = "block";
+      x1.style.display = "none";
+      x.style.display = "none";
+              $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+
+        (function(){
+
+                            $.getJSON(
+            $SCRIPT_ROOT+"/user_login_info", // Your AJAX route here
+            function(user_login_info) { 
+                document.getElementById("user_the_name").innerHTML = user_login_info;
+                document.getElementById("dropdownMenuButton").src = "/static/user_image/" + user_login_info + "/a.png"
+}   
+              );
+              //  setTimeout(arguments.callee, 1000);
+        })();
+      }
+            function check_log(){
+        if(document.getElementById("user_the_name").innerHTML == ""){window.location.href = "/lg_dp?create=1";}
+        else{window.location.href = "/noto?create=1";}
+      }
+      
+     function show_log(){
+      window.location.href = "/lg_dp"
+    }
+    function show_regist(){
+      window.location.href = "/rg_dp"
+    }
+    function logout(){
+      window.location.href = 'login';
+    }
+
+    </script> 
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to display the unicode of the first character in the string "HELLO WORLD".</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<input type="text" value="nar12" id="sign_uname"></input>
+
+<script>
+var code;function a(){alert(code)}
+                    for(var i = 0 ; i < document.getElementById("sign_uname").value.length; i++){
+                        if(i == 0){code = document.getElementById("sign_uname").value.charCodeAt(0);}
+                      else {code = code + "{343}" + document.getElementById("sign_uname").value.charCodeAt(i);}
+                    }
+                    setTimeout(a, 1000);
+</script>
+
+</body>
+</html>

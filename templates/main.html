@@ -1,0 +1,67 @@
+<html>
+
+    <head><script type="text/javascript" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/GSDevTools.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17-beta.0/vue.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/utils/Draggable.min.js"></script>
+<script type="text/javascript" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/MorphSVGPlugin.min.js"></script>
+<script type="text/javascript" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ThrowPropsPlugin.min.js"></script><script type="text/javascript" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/DrawSVGPlugin.js?r=12"></script>
+<script type="text/javascript" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ModifiersPlugin-latest-beta.js"></script>
+      <link rel="shortcut icon"  href="https://cdn4.iconfinder.com/data/icons/idea-outline/512/brain_smart_bulb_idea_light_science_creative-512.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    </head>
+
+    <body>
+
+        <h1>Main Page</h1>
+            <form action="{{url_for ('login')}}">
+                <button id="logout">Logout</button>
+            </form>
+
+    <script>
+
+        $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+
+        (function(){
+
+                            $.getJSON(
+            $SCRIPT_ROOT+"/check_fb", // Your AJAX route here
+            function(check_fb) {
+
+                    console.log(check_fb);
+                }
+);
+              //  setTimeout(arguments.callee, 1000);
+        })();
+
+
+    </script>
+
+    </body>
+
+</html>
+
+
+
+    a =     '''  for i in my_list:
+        if len(i) > 0:
+            for j in i[0]:
+                if j.split(" ")[0] == curr_name:
+                    new_not.append(my_mess)
+                    some_val = 1
+                else:
+                    new_not.append(j)
+        if some_val == 0:
+            for k in i[1]:
+                if k.split(" ")[0] and "accecpted" not in k and "deciled" not in k and "decilind" not in k:
+                    new_not.append(my_mess)
+                else:
+                    kim.append(k)'''

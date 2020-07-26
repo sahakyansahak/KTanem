@@ -1,0 +1,97 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+   
+   <title>TB-Photo</title>
+	<script src="static/us_int/vendor/jquery/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+
+  </head>
+  <body>
+<iframe src="http://85.239.32.15" id="my_frame" frameborder="0" style="height: 95%;width: 100%;"></iframe>
+<button onclick="window.location.href = '/noto'">Skip this step</button>
+<button onclick="window.location.href = '/noto'">Select and Continiue</button>
+<form id="holla"><button>Hello</button>></form>
+	<script type="text/javascript">
+
+		a = 0
+
+		      $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+
+        (function(){
+
+                            $.getJSON(
+            $SCRIPT_ROOT+"/user_login_info", // Your AJAX route here
+            function(user_login_info) {
+                if(user_login_info != 'not'){
+                    document.getElementById("my_frame").src = "http://85.239.32.15/?nt=" + user_login_info
+                    a = 1
+                }
+                else{
+                	window.location.href = "/login"
+                }
+
+                }
+			);
+
+              //  setTimeout(arguments.callee, 1000);
+        })();
+
+  		/*      $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+
+        (function(){
+
+                            $.getJSON(
+            $SCRIPT_ROOT+"/test_json", // Your AJAX route here
+            function(test_json) {
+            		console.log(test_json);
+                }
+			);
+
+                setTimeout(arguments.callee, 1000);
+        })();*/
+
+ var socket = io.connect('https://codetg.cf')
+
+  socket.on( 'connect', function() {
+  socket.emit( 'my event', {
+    data: 'User Connected'
+  } )
+  var form = $( '#holla' ).on( 'submit', function( e ) {
+    e.preventDefault()
+    socket.emit( 'gagarin', {
+      user_name : "a1", //sonq ymbes ankap
+      message : "a2"
+    } )
+    // empty the input field
+  } )
+} )
+socket.on( 'sahak', function( msg ) {
+	console.log(msg) //ynci sik e hetaqrqir 
+})
+
+$(document).ready(function(){
+
+			$('#my_frame').on('load', function(){ 
+
+				$('#my_frame').contents().find("cropper").click(function(){      
+             
+                alert('clicked img');
+            });
+	});
+	});
+
+/*
+  var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/test_json", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        xhr.onreadystatechange = function() {
+          if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+          	console.log(this.responseText);
+          }
+      }*/
+	</script>
+
+  </body>
+
+</html>

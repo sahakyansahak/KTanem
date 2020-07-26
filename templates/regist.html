@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Register</title>
+	<meta charset="UTF-8">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.js"></script>
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="static/for_login/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/for_login/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/for_login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/for_login/fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/for_login/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="static/for_login/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/for_login/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/for_login/vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="static/for_login/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/for_login/css/util.css">
+	<link rel="stylesheet" type="text/css" href="static/for_login/css/main.css">
+<!--===============================================================================================-->
+	<script type="text/javascript"  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('static/for_login/images/bg-01.jpg');">
+			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+				<div class="login100-form validate-form">
+					<span class="login100-form-title p-b-49">
+						Login
+					</span>
+					<form>
+					<div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
+						<span class="label-input100">Name</span>
+						<input id="sign_name" class="input100" type="text" name="username" placeholder="Type your Name" required>
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
+						<span class="label-input100">Surname</span>
+						<input id="sign_surname" class="input100" type="text" name="username" placeholder="Type your Surname" required>
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
+						  <div class="input-group-prepend">
+   							 <span class="input-group-text" id="basic-addon1">+374</span>
+ 						  </div>
+						<span class="label-input100">Phone</span>
+
+						<input id="sign_emil" class="input100" type="text" name="username" placeholder="77123456" aria-describedby="basic-addon1" required>
+						<span class="focus-input100" data-symbol="&#xe0be;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
+						<span class="label-input100">Bday</span>
+						<input  id="sign_birthdat" class="input100" type="text" name="username" placeholder="Type your Bday Ex` 12.12.12" required>
+						<span class="focus-input100" data-symbol="&#xf1fd;"></span>
+					</div>
+											<span style="color: #fd0808;" class="label-input100" id="err2"></span>
+					    <div></div>
+						<span style="color: #fd0808;" class="label-input100" id="err"></span>
+					    <div></div>
+					    <div class="custom-control custom-checkbox mb-3">
+		                <input id="sign_mal" type="checkbox" class="custom-control-input" id="sign_mal">
+		                <label class="custom-control-label" for="sign_mal">M</label>
+		              </div>
+		              <div class="custom-control custom-checkbox mb-3">
+		                <input id="sign_fe" type="checkbox" class="custom-control-input" id="sign_fe">
+		                <label class="custom-control-label" for="sign_fe">FeM</label>
+		              </div>					
+
+					<div class="wrap-input100 validate-input" data-validate="Password is required">
+						<span class="label-input100">Password</span>
+						<input id="sign_pass" name="password" class="input100" type="password" placeholder="Type your password" required>
+						<span class="focus-input100" data-symbol="&#xf190;"></span>
+					</div>
+					<span style="color: #fd0808;" class="label-input100" id="err1"></span>
+					   <div></div>
+					<br><br>
+					<div class="container-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<button id="email_ver" type="submit" class="login100-form-btn">
+								Ստուգել Հեռախոսը
+							</button>
+						</div>
+					</div>
+				</form>
+					<div id="email_ver_code">
+											<div class="wrap-input100 validate-input" data-validate="Password is required">
+						<span class="label-input100">Կոդ</span>
+						<input  id="sign_email_code" name="password" class="input100" type="text" placeholder="Type your password">
+						<span class="focus-input100" data-symbol="&#xf0e5;"></span>
+					</div>
+					<br><br>
+										<div class="container-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<button id="sign_sumbit" type="submit" class="login100-form-btn">
+								Մուտք
+							</button>
+						</div>
+					</div>
+					</div>
+					<div class="txt1 text-center p-t-54 p-b-20">
+						<span>
+							Or Sign Up Using
+						</span>
+					</div>
+
+					<div class="flex-c-m">
+						<a onclick="checkFBlogin();" class="login100-social-item bg1">
+							<i class="fa fa-facebook"></i>
+						</a>
+
+						<a href="#" class="login100-social-item bg2">
+							<i class="fa fa-twitter"></i>
+						</a>
+
+						<a href="#" class="login100-social-item bg3">
+							<i class="fa fa-google"></i>
+						</a>
+					</div>
+
+					<div class="flex-col-c p-t-155">
+						<span class="txt1 p-b-17">
+							Or Sign Up Using
+						</span>
+
+						<a href="lg_dp" class="txt2">
+							Մուտք
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<form action="/noto" id="do_fb"></form>
+	<div id="dropDownSelect1"></div>
+	<p value="0" id="ch_lg"></p>
+	 <form id="go_to_photo" action="/sl_ph" ></form>
+<!--===============================================================================================-->
+	<script src="static/for_login/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="static/for_login/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="static/for_login/vendor/bootstrap/js/popper.js"></script>
+	<script src="static/for_login/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="static/for_login/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="static/for_login/vendor/daterangepicker/moment.min.js"></script>
+	<script src="static/for_login/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="static/for_login/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="static/for_login/js/main.js"></script>
+	  <script type="text/javascript">
+  	document.getElementById("email_ver_code").style.display = "none";
+
+  	    var email_ver_code;
+  	    var user_list;
+  	    var	my_nber;
+  	   if(document.getElementById("ch_lg").value != 1){
+        $(document).ready(function() {
+        	if(document.getElementById("ch_lg").value != 1){
+	            $('#email_ver').click(function() {
+	            	if(document.getElementById("ch_lg").value != 1){
+	            	my_nber = 1502
+	            var x3 = document.getElementById("email_ver_code");
+	            x3.style.display = "block";
+	            //$.post('/emailver/' + document.getElementById("sign_emil").value + '$' + document.getElementById("sign_uname").value + "/" + String(my_nber));
+	                                $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+
+	        (function(){
+
+	             /*               $.getJSON(
+	            $SCRIPT_ROOT+"/email_code", // Your AJAX route here
+	            function(email_code) {
+	                    email_ver_code = email_code
+	                    console.log(email_ver_code);
+	                }
+	);*/
+	                                                        $.getJSON(
+	            $SCRIPT_ROOT+"/get_full_users/0", // Your AJAX route here
+	            function(get_full_users) {
+	                    user_list = get_full_users
+	                    console.log(get_full_users);
+	                }
+	);
+	        })();}
+
+	            }); 
+	        }
+
+
+        });
+}
+
+  </script>
+<script type="text/javascript">
+	
+		        $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+
+        (function(){
+
+                            $.getJSON(
+            $SCRIPT_ROOT+"/get_full_users/0", // Your AJAX route here
+            function(get_full_users) {
+            	//$.post("/get_full_users/zxc");
+                    user_list = get_full_users
+                } 
+);
+              //  setTimeout(arguments.callee, 1000);
+        })();
+
+</script>
+          <script>
+
+        $(document).ready(function (){
+        	var urlParams = new URLSearchParams(window.location.search);
+			var myParam = urlParams.get('lang');
+			var lang = (myParam) ? myParam : "am"
+            $('#sign_sumbit').click(function() {
+                console.log(my_nber)
+                if(String(1502) == String(document.getElementById("sign_email_code").value)){
+                  var a;
+                  var code;
+                  if(sign_fe.checked == true){a = 1;}
+                  else{a = 0;}
+                  if(document.getElementById("ch_lg") != 1){
+                    $.post('/add_new_user/' + document.getElementById("sign_name").value + '|||' + document.getElementById("sign_surname").value + '|||' + document.getElementById("sign_emil").value + '|||' + "asd" + '|||' + document.getElementById("sign_pass").value + '|||' + document.getElementById("sign_birthdat").value + '|||' + a + "/" + lang);
+                    //console.log('/add_new_user/' + document.getElementById("sign_name").value + '$%' + document.getElementById("sign_surname").value + '$%' + document.getElementById("sign_emil").value + '$%' + document.getElementById("sign_uname").value + '$%' + document.getElementById("sign_pass").value + '$%' + document.getElementById("sign_birthdat").value + '$%' + a );
+                 /*   for(var i = 0 ; i < document.getElementById("sign_uname").value.length; i++){
+                    	if(i == 0){code = document.getElementById("sign_uname").value.charCodeAt(0);}
+                    	else {code = code + "{343}" + document.getElementById("sign_uname").value.charCodeAt(i);}
+                    }*/
+						function killme(){window.location.href = "/sl_ph";}
+						setTimeout(killme, 2500);
+					}
+                   
+                }
+            });
+        });
+
+    </script>
+
+<script type="text/javascript">
+	window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '2246655562123474',
+//        cookie     : true,  // enable cookies to allow the server to access
+                            // the session
+        xfbml      : true,  // parse social plugins on this page
+        version    : 'v4.0' // use graph api version 2.8
+      });
+FB.AppEvents.logPageView();
+  };
+
+  // Load the SDK asynchronously
+(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+	</script>
+    <script >
+
+	$(document).ready(function(){
+  $('#sign_uname').change(function(){
+i = 0;
+  	if(document.getElementById("sign_uname").value.length < 5){document.getElementById("err").innerHTML = "Uname must be more tahn 5";document.getElementById("ch_lg").value = 1;}
+  	
+  	else{document.getElementById("err").innerHTML = "";document.getElementById("ch_lg").value = 0;}
+  	for(i in user_list){
+  		if(user_list[i].includes(document.getElementById("sign_uname").value)){i = 1;document.getElementById("err").innerHTML = "Username already exists";document.getElementById("ch_lg").value = 1;}
+  	}
+  	if(i == 1){alert();document.getElementById("err").innerHTML = "Username already exists";document.getElementById("ch_lg").value = 1;}
+
+
+	});
+
+$('#sign_pass').change(function(){  
+
+	if(document.getElementById("sign_pass").value.includes("!")){
+		document.getElementById("ch_lg").value = 1;
+		document.getElementById("err1").innerHTML = "password cant be !";
+	}
+	else if(document.getElementById("sign_pass").value.length < 5){
+		document.getElementById("err1").innerHTML = "password mus be more than 5";
+		document.getElementById("ch_lg").value = 1;
+	}
+	else{
+		document.getElementById("err1").innerHTML = "";
+		document.getElementById("ch_lg").value = 0;
+	}
+
+	});
+$('#sign_birthdat').change(function(){ 
+
+	if(document.getElementById("sign_birthdat").value.includes("/")){
+		document.getElementById("ch_lg").value = 1;
+		document.getElementById("err2").innerHTML = "Cant be /";
+	}
+	else {
+		document.getElementById("ch_lg").value = 0;
+		document.getElementById("err2").innerHTML = "";
+	}
+
+ });
+
+
+});
+
+	function FBlogin() {
+    FB.login(function (response) {
+console.log("aa");
+var name_out = '';
+
+ var obj = {
+            userID: response.authResponse.userID,
+            accessToken: response.authResponse.accessToken,
+            nameUser: response.authResponse.name
+ };
+   FB.api('/me', function (response) {
+		$(document).ready(function() {
+		//$.post('/name/' + response.name)
+      });
+    });
+
+$(document).ready(function() {
+		 
+          //$.post('/user/' + response.authResponse.userID + '$' + response.authResponse.accessToken);
+
+		});
+    }, {
+        scope: 'publish_actions,email,user_friends',
+        return_scopes: true
+    });
+}
+
+function fetchUserDetail() {
+    FB.api('/me', 'GET', {fields: 'name, id, picture.width(150).height(150)'}, function (response) {
+       console.log(response.picture["data"]["url"]);
+       a = response.picture["data"]["url"].split("//")[1]
+
+       for(i in a){a = a.replace("/", "||");a = a.replace("?", "*")}
+       	console.log(response.name)
+       var name = response.name
+
+     // $.post('/check_fb/' + response.id )
+       $.post('/check_fb/' + response.id + '/' + response.name + '/' + a + '/' + 'm' + '/' + '12.12.12');
+       setTimeout(go_dp_fb, 1500);
+      // document.getElementById("do_fb").submit();
+      // window.location.href = "/noto?create=0?us_im=" + response.id
+    });
+
+}
+function go_dp_fb(){document.getElementById("do_fb").submit();}
+
+function checkFBlogin() {
+    FB.getLoginStatus(function (response) {
+        if (response.status === 'connected') {
+            fetchUserDetail();
+        } else if (response.status === 'not_authorized') {
+         FBlogin();
+            console.log("Please log into this app.")
+        } else {
+          FBlogin();
+
+            console.log("Please log into this Facebook.")
+        }
+    });
+}
+
+	</script>
+
+</body>
+</html>
